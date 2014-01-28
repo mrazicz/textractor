@@ -1,0 +1,14 @@
+# textractor
+
+This project is part of my bachelor thesis on the theme "Main Text
+Extraction from Web Documents"
+
+## notes
+
+Project is still under development. Currently is not suitable for use.
+
+## Copyright
+
+Copyright (c) 2014 Daniel Mrozek. See LICENSE.txt for
+further details.
+
