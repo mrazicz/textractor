@@ -2,6 +2,8 @@ require 'bundler/setup'
 require 'curb'
 require 'nokogiri'
 
+require_relative './utils'
+
 module Textractor
   # TODO: li, dd, dt - really?
   BLOCK_ELEMENTS  = Set.new(%w(address article audio blockquote canvas dd div dl
@@ -85,7 +87,7 @@ module Textractor
       @blocks    = Array.new
     end
 
-    def preprocess
+    def perform
       get_title
       remove_head
       # TODO: remove more tags
@@ -96,7 +98,16 @@ module Textractor
       remove_tags(:style)
       remove_tags(:canvas)
       # TODO: get another pages and remove boilerplate, optional!!
-      BlockCollection.new(@doc)
+      
+      # create block collection
+      rslt = BlockCollection.new(@doc)
+
+      # clean block collection
+      remove_blank_blocks!(rslt)
+      convert_whitespaces!(rslt)
+
+      # return result
+      rslt
     end
 
     private
@@ -118,6 +129,25 @@ module Textractor
     def convert_to_blocks
       @doc.traverse {|p| }
     end
+
+    def remove_blank_blocks! data
+      data.delete_if {|block| block.text.blank? } 
+    end
+
+    def convert_whitespaces! data
+      data.each do |block|
+        block.text.gsub!(/([[:space:]])[[:space:]]{2,}/, "\\1")
+        block.text.strip!
+      end
+    end
+  end
+
+  # page analyser
+  # ----------------------------------------------------------------------------
+  class Analyser
+    def initialize block_collection
+
+    end
   end
 
   # main
@@ -129,7 +159,7 @@ module Textractor
 
     def run
       html_page = HTTPClient.new(@url).get.body
-      Preprocessor.new(html_page).preprocess
+      Preprocessor.new(html_page).perform
     end
   end
 end

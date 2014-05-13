@@ -51,3 +51,13 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :console do
+  require 'pry'
+  require 'pry/completion'
+  require_relative './lib/textractor' # You know what to do.
+  ARGV.clear
+  Pry.start
+end
+task :c => :console
+

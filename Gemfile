@@ -12,4 +12,5 @@ group :development do
   gem "simplecov", ">= 0"
   gem "guard-minitest", ">= 0"
   gem "growl", ">= 0"
+  gem "pry"
 end
