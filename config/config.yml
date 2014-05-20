@@ -1,0 +1,22 @@
+test: a
+
+thresholds:
+  # counts
+  word_count:             0
+  capitalized_word_count: 0
+  uppercase_word_count:   0
+  letter_count:           0
+  sentence_count:         0
+  long_word_count:        0
+  short_word_count:       0
+  sentence_avg_length:    0
+  word_avg_length:        0
+  link_density:           0
+  uppercase_density:      0
+  long_word_density:      0
+  short_word_density:     0
+  nested:
+    - cite
+    - code
+
+
