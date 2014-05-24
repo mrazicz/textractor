@@ -11,6 +11,24 @@ module Textractor
       Preprocessor.new(html_page).perform
     end
 
+    def analyse blocks
+      train_network(false) unless defined?(@@fann)
+      blocks.each {|b| b.nn_score = @@fann.run(b.data_for_neural)[0] }
+      blocks
+    end
+
+    def dbg
+      rslt = preprocess
+      rslt = analyse(rslt) 
+      pp = PostAnalyser.new(rslt)
+      pp.main_text_start
+      pp.common_path
+      rslt.map do |b|
+        [b.nn_score, "<#{b.name}>: #{b.text}", b.features.link_count]
+      end
+
+    end
+
     def run retrain=false, limit=-1.0
       rslt = preprocess
       train_network(retrain) if retrain || !defined?(@@fann)

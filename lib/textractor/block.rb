@@ -4,6 +4,9 @@ module Textractor
                 :relative_position, :class_chain, :path
     attr_accessor :nn_score, :final_score
 
+    GOOD_THRESHOLD      = 0.5  # threshold for good blocks
+    NEAR_GOOD_THRESHOLD = 0.25 # threshold for near good blocks
+
     def initialize element, class_chain
       @element = element.dup
       # TODO: how to convert lists, tables, definition lists etc. to text
@@ -15,12 +18,28 @@ module Textractor
       @class_chain = class_chain
     end
 
-    def features
-      @features ||= BlockFeatures.new(self)
+    def nn_good?
+      nn_score.to_i > GOOD_THRESHOLD
     end
 
-    def scores
-      @scores ||= BlockScores.new()
+    def nn_near_good?
+      nn_score.to_i > NEAR_GOOD_THRESHOLD
+    end
+
+    def nn_bad?
+      !good?
+    end
+
+    def good?
+      score.to_i > GOOD_THRESHOLD
+    end
+
+    def bad?
+      !good?
+    end
+
+    def features
+      @features ||= BlockFeatures.new(self)
     end
 
     def name
