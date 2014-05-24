@@ -15,8 +15,15 @@ thresholds:
   uppercase_density:      0
   long_word_density:      0
   short_word_density:     0
-  nested:
-    - cite
-    - code
 
+good_inline:
+  - cite
+  - code
+
+good_classes_and_ids:
+  - content
+  - main_content
+  - main
+  - article
+  - perex
 

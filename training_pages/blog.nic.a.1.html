@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tak teď už jen Afrika | Blog zaměstnanců CZ.NIC</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://blog.nic.cz/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="Blog zaměstnanců CZ.NIC &raquo; RSS zdroj" href="http://blog.nic.cz/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Blog zaměstnanců CZ.NIC &raquo; RSS komentářů" href="http://blog.nic.cz/comments/feed/" />
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-439372-5']);
+				            _gaq.push(['_setCustomVar',2,'author','ondrej-filip',3],['_setCustomVar',3,'year','2014',3],['_setCustomVar',4,'categories','ipv6 nezarazene',3],['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Blog zaměstnanců CZ.NIC &raquo; RSS komentářů pro Tak teď už jen Afrika" href="http://blog.nic.cz/2014/05/20/tak-ted-uz-jen-afrika/feed/" />
+<link rel='stylesheet' id='wp-polls-css'  href='http://blog.nic.cz/wp-content/plugins/wp-polls/polls-css.css?ver=2.63' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='http://blog.nic.cz/wp-content/themes/nic-responsive/libs/bootstrap/css/bootstrap.min.css?ver=3.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-select-css'  href='http://blog.nic.cz/wp-content/themes/nic-responsive/libs/bootstrap-select/bootstrap-select.css?ver=1.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='nic-style-css'  href='http://blog.nic.cz/wp-content/themes/nic-responsive/style.css?ver=2.0.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/themes/nic-responsive/libs/modernizr/modernizr-2.6.1-respond-1.1.0.min.js?ver=2.6.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.nic.cz/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.nic.cz/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Validace DNSSEC pomocí Dnsmasq' href='http://blog.nic.cz/2014/05/15/validace-dnssec-pomoci-dnsmasq/' />
+<meta name="generator" content="WordPress 3.9.1" />
+<link rel='canonical' href='http://blog.nic.cz/2014/05/20/tak-ted-uz-jen-afrika/' />
+<link rel='shortlink' href='http://wp.me/pH9BS-2tJ' />
+<link rel="stylesheet" type="text/css" href="http://blog.nic.cz/wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<style type="text/css">
+.wp-polls .pollbar {
+	margin: 1px;
+	font-size: 6px;
+	line-height: 8px;
+	height: 8px;
+	background-image: url('http://blog.nic.cz/wp-content/plugins/wp-polls/images/default/pollbg.gif');
+	border: 1px solid #c8c8c8;
+}
+</style>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js?ver=1.10.2'></script>
+<meta http-equiv="X-XRDS-Location" content="http://blog.nic.cz/?xrds" />
+<meta http-equiv="X-Yadis-Location" content="http://blog.nic.cz/?xrds" />
+</head>
+
+<body class="single single-post postid-9531 single-format-standard group-blog">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+        <div class="wrap">
+            <div class="container clearfix">
+                <div class="site-branding">
+                    <h1 class="site-title logo"><a href="http://blog.nic.cz/" rel="home">Blog zaměstnanců <span>CZ.NIC</span></a></h1>
+                    <h2 class="site-description visuallyhidden">@ IN SOA domény.dns.enum.mojeid.internet. nic.cz.</h2>
+                </div>
+
+                <div class="right">
+                    <nav id="site-navigation" class="main-navigation menu" role="navigation">
+                        <h1 class="menu-toggle visuallyhidden">Menu</h1>
+                        <a class="skip-link visuallyhidden" href="#content">Přeskočit na obsah</a>
+
+                        <ul>
+                            <li>
+                                <a href="#" accesskey="a">Archiv</a>
+                                <ul>
+                                    	<li><a href='http://blog.nic.cz/2014/05/'>Květen 2014</a></li>
+	<li><a href='http://blog.nic.cz/2014/04/'>Duben 2014</a></li>
+	<li><a href='http://blog.nic.cz/2014/03/'>Březen 2014</a></li>
+	<li><a href='http://blog.nic.cz/2014/02/'>Únor 2014</a></li>
+	<li><a href='http://blog.nic.cz/2014/01/'>Leden 2014</a></li>
+	<li><a href='http://blog.nic.cz/2013/12/'>Prosinec 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/11/'>Listopad 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/10/'>Říjen 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/09/'>Září 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/08/'>Srpen 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/07/'>Červenec 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/06/'>Červen 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/05/'>Květen 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/04/'>Duben 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/03/'>Březen 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/02/'>Únor 2013</a></li>
+	<li><a href='http://blog.nic.cz/2013/01/'>Leden 2013</a></li>
+	<li><a href='http://blog.nic.cz/2012/12/'>Prosinec 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/11/'>Listopad 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/10/'>Říjen 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/09/'>Září 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/08/'>Srpen 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/07/'>Červenec 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/06/'>Červen 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/05/'>Květen 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/04/'>Duben 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/03/'>Březen 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/02/'>Únor 2012</a></li>
+	<li><a href='http://blog.nic.cz/2012/01/'>Leden 2012</a></li>
+	<li><a href='http://blog.nic.cz/2011/12/'>Prosinec 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/11/'>Listopad 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/10/'>Říjen 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/09/'>Září 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/08/'>Srpen 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/07/'>Červenec 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/06/'>Červen 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/05/'>Květen 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/04/'>Duben 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/03/'>Březen 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/02/'>Únor 2011</a></li>
+	<li><a href='http://blog.nic.cz/2011/01/'>Leden 2011</a></li>
+	<li><a href='http://blog.nic.cz/2010/12/'>Prosinec 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/11/'>Listopad 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/10/'>Říjen 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/09/'>Září 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/08/'>Srpen 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/07/'>Červenec 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/06/'>Červen 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/05/'>Květen 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/04/'>Duben 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/03/'>Březen 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/02/'>Únor 2010</a></li>
+	<li><a href='http://blog.nic.cz/2010/01/'>Leden 2010</a></li>
+	<li><a href='http://blog.nic.cz/2009/12/'>Prosinec 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/11/'>Listopad 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/10/'>Říjen 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/09/'>Září 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/08/'>Srpen 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/07/'>Červenec 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/06/'>Červen 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/05/'>Květen 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/04/'>Duben 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/03/'>Březen 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/02/'>Únor 2009</a></li>
+	<li><a href='http://blog.nic.cz/2009/01/'>Leden 2009</a></li>
+	<li><a href='http://blog.nic.cz/2008/12/'>Prosinec 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/11/'>Listopad 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/10/'>Říjen 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/09/'>Září 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/08/'>Srpen 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/07/'>Červenec 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/06/'>Červen 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/05/'>Květen 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/04/'>Duben 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/03/'>Březen 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/02/'>Únor 2008</a></li>
+	<li><a href='http://blog.nic.cz/2008/01/'>Leden 2008</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" accesskey="r">Rubrika</a>
+                                <ul>
+                                    	<li class="cat-item cat-item-13"><a href="http://blog.nic.cz/category/bgp/" title="Zobrazit všechny příspěvky zařazené do rubriky BGP">BGP</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blog.nic.cz/category/dns/" title="Zobrazit všechny příspěvky zařazené do rubriky DNS">DNS</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://blog.nic.cz/category/dnssec/" title="Zobrazit všechny příspěvky zařazené do rubriky DNSSEC">DNSSEC</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.nic.cz/category/domeny/" title="Zobrazit všechny příspěvky zařazené do rubriky Domény">Domény</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.nic.cz/category/enum/" title="Zobrazit všechny příspěvky zařazené do rubriky ENUM">ENUM</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blog.nic.cz/category/fred/" title="Zobrazit všechny příspěvky zařazené do rubriky FRED">FRED</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blog.nic.cz/category/ipv6/" title="Zobrazit všechny příspěvky zařazené do rubriky IPv6">IPv6</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://blog.nic.cz/category/mojeid/" title="Zobrazit všechny příspěvky zařazené do rubriky mojeID">mojeID</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.nic.cz/category/nezarazene/" title="Zobrazit všechny příspěvky zařazené do rubriky Nezařazené">Nezařazené</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://blog.nic.cz/category/security/" title="Zobrazit všechny příspěvky zařazené do rubriky Security">Security</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://blog.nic.cz/category/turris/" title="Zobrazit všechny příspěvky zařazené do rubriky Turris">Turris</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </nav><!-- #site-navigation -->
+
+                    <div class="search">
+                        <form role="search" method="get" class="search-form" action="http://blog.nic.cz/">
+	<label>
+		<span class="visuallyhidden">Search for:</span>
+		<input type="search" class="search-field" placeholder="Hledat &hellip;" value="" name="s">
+	</label>
+	<input type="submit" class="search-submit" value="Search">
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content wrap">
+        <div class="container">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-9531" class="post-9531 post type-post status-publish format-standard hentry category-ipv6 category-nezarazene article clearfix">
+    <header class="entry-header">
+        <h1 class="entry-title"><a href="http://blog.nic.cz/2014/05/20/tak-ted-uz-jen-afrika/" rel="bookmark">Tak teď už jen Afrika</a></h1>
+        <div class="entry-date">
+                20.5.        </div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+
+        <div class="entry-content">
+            <p>Dnešním dnem se i region Latinské Ameriky připojí ke trojici Regionálních internetových registrů (RIR), které deklarovaly fázi vyčerpání IPv4 adres. Jen pro připomenutí, silné regiony <a href="http://www.apnic.net" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.apnic.net']);">Asie-Pacifik</a>, <a href="http://www.ripe.net" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.ripe.net']);">Evropa</a> a <a href="http://www.arin.net" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.arin.net']);">Severní Amerika</a>, vyhlásily tento stav ve chvíli, kdy jejich zásoba adres poklesla pod /8, tedy 16 miliónů adres. Latinská Amerika si stanovila tuto hranici na /9, tedy polovinu tohoto množství. I kvůli tomu má tento tento slabší region nejméně adres ze všech. Opět platí, že téměř každý region přistoupil k tomuto stavu různě. <a href="http://www.lacnic.net" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.lacnic.net']);">LACNIC</a> bude přidělovat i větší porce dat, pouze zpřísní kontrolu nad jednotlivými žádostmi, takže lze očekávat i mírné zpomalení čerpání. K další změně v alokační politice dojde v případě, až zůstane pouze /10, tedy polovina současného množství. Pak již bude možné provádět pouze alokace velikosti /24 až /22, tedy obdobně jako u nás v Evropě. A poslední rezerva /11 zůstane vyhrazena pouze novým členům.</p>
+<p><span id="more-9531"></span></p>
+<p>Každopádně posledním regionem, už zůstává pouze <a href="http://www.afrinic.net" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.afrinic.net']);">Afrika</a>, která má dle současných odhadů zásoby přibližně do roku 2019. To jen podtrhuje nelogičnost rozhodnutí o <a href="http://www.root.cz/clanky/tak-nam-dosly-a-co-bude-dal/" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.root.cz']);">rovném rozdělení posledních IP bloků</a> nejvyššího registru <a href="http://www.iana.org" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.iana.org']);">IANA</a>. Otázkou pochopitelně je, zdali operátoři působící mimo Afriku nenajdou nějaké cesty, jak si na africké adresy &#8222;sáhnout&#8220;. S tím, jak se zvyšuje cena IPv4 adres na trhu, lze předpokládat, že vzroste i kreativita některých žadatelů.</p>
+<p>Každopádně pořád platí, že už není nač čekat, pojďme do IPv6!</p>
+            <section class="author"><strong>Autor:</strong> <a href="http://blog.nic.cz/author/feela/" title="Příspěvky od Ondřej Filip" rel="author">Ondřej Filip</a></section>
+        </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+
+        <div class="entry-meta-item date-time">
+            <strong>Publikováno:</strong> 20.5.2014 v 11:30        </div>
+        <div class="entry-meta-item entry-author">
+            <strong>Autor:</strong> <a href="http://blog.nic.cz/author/feela/" title="Příspěvky od Ondřej Filip" rel="author">Ondřej Filip</a>        </div>
+                    
+                <div class="entry-meta-item cat-links">
+                    <strong>Kategorie:</strong> <a href="http://blog.nic.cz/category/ipv6/" title="Zobrazit všechny příspěvky z rubriky IPv6" rel="category tag">IPv6</a>, <a href="http://blog.nic.cz/category/nezarazene/" title="Zobrazit všechny příspěvky z rubriky Nezařazené" rel="category tag">Nezařazené</a>                </div>
+            
+                    
+        <div class="entry-meta-item social">
+                <div class="social-button fb">
+        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblog.nic.cz%2F2014%2F05%2F20%2Ftak-ted-uz-jen-afrika%2F&amp;width=180&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=189444331247939" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:180px; height:21px;" allowTransparency="true"></iframe>
+    </div>
+    <div class="social-button twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blog.nic.cz/2014/05/20/tak-ted-uz-jen-afrika/" data-lang="cs">Tweet</a>
+    </div>
+    <div class="social-button plusone">
+        <iframe src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;url=http%3A%2F%2Fblog.nic.cz%2F2014%2F05%2F20%2Ftak-ted-uz-jen-afrika%2F&amp;parent=http%3A%2F%2Fblog.nic.cz%2F2014%2F05%2F20%2Ftak-ted-uz-jen-afrika%2F" allowtransparency="true" frameborder="0" scrolling="no" title="+1"></iframe>
+    </div>
+        </div>
+        <div class="btm"></div>
+
+            </footer><!-- .entry-meta -->
+    <div class="bgl"></div>
+    <div class="bgr"></div>
+</article><!-- #post-## -->
+
+            
+			
+<div id="comments" class="comments">
+
+	
+	        <div class="bbox" id="komentare">
+            <h2 class="comments-title">
+                Komentáře <span>(2)</span>            </h2>
+        </div>
+
+		<ol class="comment-list">
+			
+	<li id="comment-12688" class="comment even thread-even depth-1">
+		<article id="div-comment-12688" class="comment-body">
+			<header class="comment-meta">
+				<div class="comment-author vcard">
+					<cite class="fn"><a href="http://dousa.blogujem.eu" onclick="javascript:_gaq.push(['_trackEvent','outbound-commentauthor','http://dousa.blogujem.eu']);"  rel='external nofollow' class='url'>Ondra</a></cite> <span class="says">říká:</span>				</div><!-- .comment-author -->
+
+				<div class="comment-metadata">
+						<time datetime="2014-05-20T12:44:59+00:00">
+							20. 5. 2014 v 12:44						</time>
+									</div><!-- .comment-metadata -->
+
+							</header><!-- .comment-meta -->
+
+			<div class="comment-content">
+				<p>Já bych šel (doma i u klientů)&#8230;. ale ISP&#8230; :/</p>
+			</div><!-- .comment-content -->
+
+			<div class="reply"><a class='comment-reply-link' href='/2014/05/20/tak-ted-uz-jen-afrika/?replytocom=12688#respond' onclick='return addComment.moveForm("div-comment-12688", "12688", "respond", "9531")'>Odpovědět</a></div>		</article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+
+	<li id="comment-12694" class="comment odd alt thread-odd thread-alt depth-1">
+		<article id="div-comment-12694" class="comment-body">
+			<header class="comment-meta">
+				<div class="comment-author vcard">
+					<cite class="fn"><a href="https://plus.google.com/u/0/+RadoslavKolář/posts" onclick="javascript:_gaq.push(['_trackEvent','outbound-commentauthor','']);"  rel='external nofollow' class='url'>Radoslav</a></cite> <span class="says">říká:</span>				</div><!-- .comment-author -->
+
+				<div class="comment-metadata">
+						<time datetime="2014-05-20T13:50:13+00:00">
+							20. 5. 2014 v 13:50						</time>
+									</div><!-- .comment-metadata -->
+
+							</header><!-- .comment-meta -->
+
+			<div class="comment-content">
+				<p>Já jsem také připraven na v6, celá domací síť. Jen ISP, přitom má přímý peering na NIX.cz. Těžko říct, kde je problem, upgrade nebo žádná odezva u klientu po v6, dostatek Ipv4 adres ?</p>
+			</div><!-- .comment-content -->
+
+			<div class="reply"><a class='comment-reply-link' href='/2014/05/20/tak-ted-uz-jen-afrika/?replytocom=12694#respond' onclick='return addComment.moveForm("div-comment-12694", "12694", "respond", "9531")'>Odpovědět</a></div>		</article><!-- .comment-body -->
+
+	</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Zanechte komentář <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2014/05/20/tak-ted-uz-jen-afrika/#respond" style="display:none;">Zrušit odpověď na komentář</a></small></h3>
+									<form action="http://blog.nic.cz/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																										<p class="comment-form-author row"><label for="author">Jméno<span class="required">*</span>:</label><input id="author" name="author" type="text" value="" size="30" /></p>
+<p class="comment-form-email row tt"><label for="email">Email<span class="required">*</span>:</label><input id="email" name="email" type="email" value="" size="30" /><span class="noshow">(Nebude zobrazen)</span></p>
+<p class="comment-form-url row"><label for="url">Web:</label><input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment row"><label for="comment">Váš komentář:</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Odeslat komentář" />
+							<input type='hidden' name='comment_post_ID' value='9531' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a7e0b0ed64" /></p><script type='text/javascript' src='http://blog.nic.cz/wp-content/plugins/akismet/_inc/form.js?ver=3.0.0'></script>
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="53"/></p>					</form>
+							</div><!-- #respond -->
+			        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('#commentform').submit(function () {
+                    _gaq.push(
+                            ['_setAccount', 'UA-439372-5'],
+                            ['_trackEvent', 'comment', 'submit']
+                    );
+                });
+            });
+        </script>
+		
+</div><!-- #comments -->
+            	<nav class="navigation post-navigation" role="navigation">
+        <span class="prev">
+            <a href="http://blog.nic.cz/2014/05/15/validace-dnssec-pomoci-dnsmasq/" rel="prev"><strong>Předchozí:</strong> Validace DNSSEC pomocí Dnsmasq</a>        </span>
+        <span class="next">
+                    </span>
+        <div class="bgl"></div>
+        <div class="bgr"></div>
+	</nav><!-- .navigation -->
+			
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="http://blog.nic.cz/wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+            <div class="row-fluid clearfix">
+                <div class="col-md-8 rubriky" style="width:auto;/* width:auto pridano kvuli presunu Archivu dolu. */">
+                    <h3>Rubriky:</h3>
+                    <ul class="categories-list">
+                        	<li class="cat-item cat-item-13"><a href="http://blog.nic.cz/category/bgp/" title="Zobrazit všechny příspěvky zařazené do rubriky BGP">BGP</a> (2)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blog.nic.cz/category/dns/" title="Zobrazit všechny příspěvky zařazené do rubriky DNS">DNS</a> (67)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://blog.nic.cz/category/dnssec/" title="Zobrazit všechny příspěvky zařazené do rubriky DNSSEC">DNSSEC</a> (42)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.nic.cz/category/domeny/" title="Zobrazit všechny příspěvky zařazené do rubriky Domény">Domény</a> (106)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.nic.cz/category/enum/" title="Zobrazit všechny příspěvky zařazené do rubriky ENUM">ENUM</a> (12)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blog.nic.cz/category/fred/" title="Zobrazit všechny příspěvky zařazené do rubriky FRED">FRED</a> (15)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blog.nic.cz/category/ipv6/" title="Zobrazit všechny příspěvky zařazené do rubriky IPv6">IPv6</a> (78)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://blog.nic.cz/category/mojeid/" title="Zobrazit všechny příspěvky zařazené do rubriky mojeID">mojeID</a> (36)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.nic.cz/category/nezarazene/" title="Zobrazit všechny příspěvky zařazené do rubriky Nezařazené">Nezařazené</a> (145)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://blog.nic.cz/category/security/" title="Zobrazit všechny příspěvky zařazené do rubriky Security">Security</a> (68)
+</li>
+	<li class="cat-item cat-item-29"><a href="http://blog.nic.cz/category/turris/" title="Zobrazit všechny příspěvky zařazené do rubriky Turris">Turris</a> (3)
+</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</div><!-- #content -->
+
+
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="wrap">
+            <div class="container clerafix">
+                <div class="row">
+                    <div class="networks">
+                        <span class="fcb"><a href="https://www.facebook.com/CZ.NIC">Facebook</a></span>
+                        <span class="twt"><a href="https://twitter.com/CZ_NIC">Twitter</a></span>
+                        <span class="gpl"><a href="https://plus.google.com/114880789978280332635/posts">Google+</a></span>
+                        <span class="rss"><a href="http://blog.nic.cz/feed/ ">RSS</a></span>
+                    </div>
+                    
+                    <!-- Archiv blogu - -->
+                    <div class="col-md-4 archiv" style="float:right; margin:20px 30px 20px 0px;">
+                        <!-- <h3 style="text-align:right; border:1px solid;">&nbsp;Archiv:&nbsp;</h3> -->
+			<h3 style="text-align:right;"> &nbsp; Archiv:&nbsp;</h3>
+			<select class="selectpicker">
+                            <option disabled selected class="nazev-ne">Vyber měsíc a rok</option> 
+                            	<option value='http://blog.nic.cz/2014/05/'> Květen 2014 </option>
+	<option value='http://blog.nic.cz/2014/04/'> Duben 2014 </option>
+	<option value='http://blog.nic.cz/2014/03/'> Březen 2014 </option>
+	<option value='http://blog.nic.cz/2014/02/'> Únor 2014 </option>
+	<option value='http://blog.nic.cz/2014/01/'> Leden 2014 </option>
+	<option value='http://blog.nic.cz/2013/12/'> Prosinec 2013 </option>
+	<option value='http://blog.nic.cz/2013/11/'> Listopad 2013 </option>
+	<option value='http://blog.nic.cz/2013/10/'> Říjen 2013 </option>
+	<option value='http://blog.nic.cz/2013/09/'> Září 2013 </option>
+	<option value='http://blog.nic.cz/2013/08/'> Srpen 2013 </option>
+	<option value='http://blog.nic.cz/2013/07/'> Červenec 2013 </option>
+	<option value='http://blog.nic.cz/2013/06/'> Červen 2013 </option>
+	<option value='http://blog.nic.cz/2013/05/'> Květen 2013 </option>
+	<option value='http://blog.nic.cz/2013/04/'> Duben 2013 </option>
+	<option value='http://blog.nic.cz/2013/03/'> Březen 2013 </option>
+	<option value='http://blog.nic.cz/2013/02/'> Únor 2013 </option>
+	<option value='http://blog.nic.cz/2013/01/'> Leden 2013 </option>
+	<option value='http://blog.nic.cz/2012/12/'> Prosinec 2012 </option>
+	<option value='http://blog.nic.cz/2012/11/'> Listopad 2012 </option>
+	<option value='http://blog.nic.cz/2012/10/'> Říjen 2012 </option>
+	<option value='http://blog.nic.cz/2012/09/'> Září 2012 </option>
+	<option value='http://blog.nic.cz/2012/08/'> Srpen 2012 </option>
+	<option value='http://blog.nic.cz/2012/07/'> Červenec 2012 </option>
+	<option value='http://blog.nic.cz/2012/06/'> Červen 2012 </option>
+	<option value='http://blog.nic.cz/2012/05/'> Květen 2012 </option>
+	<option value='http://blog.nic.cz/2012/04/'> Duben 2012 </option>
+	<option value='http://blog.nic.cz/2012/03/'> Březen 2012 </option>
+	<option value='http://blog.nic.cz/2012/02/'> Únor 2012 </option>
+	<option value='http://blog.nic.cz/2012/01/'> Leden 2012 </option>
+	<option value='http://blog.nic.cz/2011/12/'> Prosinec 2011 </option>
+	<option value='http://blog.nic.cz/2011/11/'> Listopad 2011 </option>
+	<option value='http://blog.nic.cz/2011/10/'> Říjen 2011 </option>
+	<option value='http://blog.nic.cz/2011/09/'> Září 2011 </option>
+	<option value='http://blog.nic.cz/2011/08/'> Srpen 2011 </option>
+	<option value='http://blog.nic.cz/2011/07/'> Červenec 2011 </option>
+	<option value='http://blog.nic.cz/2011/06/'> Červen 2011 </option>
+	<option value='http://blog.nic.cz/2011/05/'> Květen 2011 </option>
+	<option value='http://blog.nic.cz/2011/04/'> Duben 2011 </option>
+	<option value='http://blog.nic.cz/2011/03/'> Březen 2011 </option>
+	<option value='http://blog.nic.cz/2011/02/'> Únor 2011 </option>
+	<option value='http://blog.nic.cz/2011/01/'> Leden 2011 </option>
+	<option value='http://blog.nic.cz/2010/12/'> Prosinec 2010 </option>
+	<option value='http://blog.nic.cz/2010/11/'> Listopad 2010 </option>
+	<option value='http://blog.nic.cz/2010/10/'> Říjen 2010 </option>
+	<option value='http://blog.nic.cz/2010/09/'> Září 2010 </option>
+	<option value='http://blog.nic.cz/2010/08/'> Srpen 2010 </option>
+	<option value='http://blog.nic.cz/2010/07/'> Červenec 2010 </option>
+	<option value='http://blog.nic.cz/2010/06/'> Červen 2010 </option>
+	<option value='http://blog.nic.cz/2010/05/'> Květen 2010 </option>
+	<option value='http://blog.nic.cz/2010/04/'> Duben 2010 </option>
+	<option value='http://blog.nic.cz/2010/03/'> Březen 2010 </option>
+	<option value='http://blog.nic.cz/2010/02/'> Únor 2010 </option>
+	<option value='http://blog.nic.cz/2010/01/'> Leden 2010 </option>
+	<option value='http://blog.nic.cz/2009/12/'> Prosinec 2009 </option>
+	<option value='http://blog.nic.cz/2009/11/'> Listopad 2009 </option>
+	<option value='http://blog.nic.cz/2009/10/'> Říjen 2009 </option>
+	<option value='http://blog.nic.cz/2009/09/'> Září 2009 </option>
+	<option value='http://blog.nic.cz/2009/08/'> Srpen 2009 </option>
+	<option value='http://blog.nic.cz/2009/07/'> Červenec 2009 </option>
+	<option value='http://blog.nic.cz/2009/06/'> Červen 2009 </option>
+	<option value='http://blog.nic.cz/2009/05/'> Květen 2009 </option>
+	<option value='http://blog.nic.cz/2009/04/'> Duben 2009 </option>
+	<option value='http://blog.nic.cz/2009/03/'> Březen 2009 </option>
+	<option value='http://blog.nic.cz/2009/02/'> Únor 2009 </option>
+	<option value='http://blog.nic.cz/2009/01/'> Leden 2009 </option>
+	<option value='http://blog.nic.cz/2008/12/'> Prosinec 2008 </option>
+	<option value='http://blog.nic.cz/2008/11/'> Listopad 2008 </option>
+	<option value='http://blog.nic.cz/2008/10/'> Říjen 2008 </option>
+	<option value='http://blog.nic.cz/2008/09/'> Září 2008 </option>
+	<option value='http://blog.nic.cz/2008/08/'> Srpen 2008 </option>
+	<option value='http://blog.nic.cz/2008/07/'> Červenec 2008 </option>
+	<option value='http://blog.nic.cz/2008/06/'> Červen 2008 </option>
+	<option value='http://blog.nic.cz/2008/05/'> Květen 2008 </option>
+	<option value='http://blog.nic.cz/2008/04/'> Duben 2008 </option>
+	<option value='http://blog.nic.cz/2008/03/'> Březen 2008 </option>
+	<option value='http://blog.nic.cz/2008/02/'> Únor 2008 </option>
+	<option value='http://blog.nic.cz/2008/01/'> Leden 2008 </option>
+                        </select>
+                        <!-- <h3 style="text-align:right; float:right; border:1px solid;">&nbsp;Archiv:&nbsp;</h3> -->
+                    </div> <!-- Archiv - konec --->
+                    
+		    
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4 box cci">
+                        <p>Veškerý obsah je k dispozici pod licencí (Creative common Attribution-ShareAlike 3.0).</p>
+                    </div>
+                    <div class="col-md-4 box wpi">
+                        <p><strong>Blog</strong> je poháněn Wordpressem.</p>
+                    </div>
+                    <div class="col-md-4 box wai">
+                        <p><strong>Blog</strong> je archivován na WebArchivu Národní knihovny ČR.</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row-fluid down">
+                                        <div class="links">
+                        <strong>Ostatní weby:</strong>
+                        <ul>
+                            <li><a href="http://akademie.nic.cz" title="Akademie" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://akademie.nic.cz']);">Akademie</a></li>
+<li><a href="http://www.csirt.cz" title="CSIRT" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.csirt.cz']);">CSIRT.CZ</a></li>
+<li><a href="http://www.nic.cz/dnssec" title="DNSSEC" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.nic.cz']);">DNSSEC</a></li>
+<li><a href="http://www.domenovyprohlizec.cz" title="Doménový prohlížeč" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.domenovyprohlizec.cz']);">Doménový prohlížeč</a></li>
+<li><a href="http://fred.nic.cz" title="Free Registry for ENUM and Domains" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://fred.nic.cz']);">FRED</a></li>
+<li><a href="http://labs.nic.cz" title="Laboratoře" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://labs.nic.cz']);">Laboratoře</a></li>
+<li><a href="http://www.mojeid.cz" title="mojeID" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.mojeid.cz']);">mojeID</a></li>
+                        </ul>
+                    </div>
+                                        <div class="footerlogo">
+                        <a href="http://www.nic.cz"><img src="http://blog.nic.cz/wp-content/themes/nic-responsive/img/footer-logo.png" alt="Logo CZ.nic"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var pollsL10n = {"ajax_url":"http:\/\/blog.nic.cz\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"1","show_fading":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/plugins/wp-polls/polls-js.js?ver=2.63'></script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/themes/nic-responsive/libs/bootstrap/js/bootstrap.min.js?ver=3.0.0'></script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/themes/nic-responsive/libs/bootstrap-select/bootstrap-select.js?ver=3.0.0'></script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/themes/nic-responsive/js/plugins.js?ver=1'></script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-content/themes/nic-responsive/js/main.js?ver=1'></script>
+<script type='text/javascript' src='http://blog.nic.cz/wp-includes/js/comment-reply.min.js?ver=3.9.1'></script>
+<!--stats_footer_test--><script src="http://stats.wordpress.com/e-201421.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'10285048',v:'ext',post:'9531'});
+var load_cmc = function(){linktracker_init(10285048,9531,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+
+</body>
+</html>

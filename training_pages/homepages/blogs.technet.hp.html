@@ -1,0 +1,2141 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head><link href="http://i1.blogs.technet.com/rrcontent/e6262c5aaf11c4f977f0b5c6f12994bd-7f7f31bbbbdc7042b62c6f61c0ee4ee2-RequestReducedStyle.css" rel="Stylesheet" type="text/css" /><script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.1.min.js" type="text/javascript" language="javascript"></script><link rel="shortcut icon" type="image/ico" href="/Themes/favicon.ico"><meta name="robots" content="index,follow"><meta name="keywords" content="microsoft technet blog czech cesky windows server 2000 2003 2006 2007 2008 vista windows 7 exchange isa sbs active directory ad iis security info system center operations data protection configuration manager r2 beta"><meta name="GENERATOR" content="7.x Production"><link rel="alternate" type="application/rss+xml" title="Site Home (RSS 2.0)" href="http://blogs.technet.com/rss.aspx">
+<link rel="alternate" type="application/rss+xml" title="TechNet Blog CZ/SK (RSS 2.0)" href="http://blogs.technet.com/b/technetczsk/rss.aspx">
+<link rel="alternate" type="application/atom+xml" title="TechNet Blog CZ/SK (Atom 1.0)" href="http://blogs.technet.com/b/technetczsk/atom.aspx">
+
+                    <script src="http://i1.blogs.technet.com/rrcontent/882c15308b94067e780847bea99822ca-9ebbacc21adc19297214b71092198a40-RequestReducedScript.js" type="text/javascript" ></script><script type="text/javascript">
+// <![CDATA[
+try { jQuery.extend(jQuery.validator.messages,{required:'This field is required.',remote:'Please fix this field.',date:'Please enter a valid date.',dateISO:'Please enter a valid date (ISO).',number:'Please enter a valid number.',digits:'Please enter only digits.',creditcard:'Please enter a valid credit card number.',equalTo:'Please enter the same value again.',accept:'Please enter a value with a valid extension.',maxlength:jQuery.validator.format('Please enter no more than {0} characters.'),minlength:jQuery.validator.format('Please enter at least {0} characters.'),rangelength:jQuery.validator.format('Please enter a value between {0} and {1} characters long.'),range:jQuery.validator.format('Please enter a value between {0} and {1}.'),max:jQuery.validator.format('Please enter a value less than or equal to {0}.'),min:jQuery.validator.format('Please enter a value greater than or equal to {0}.')}); } catch(e) { };
+// ]]>
+</script><script src="http://i1.blogs.technet.com/rrcontent/3b989b6ff1c8202c8c7938900f73b19e-ff97bb072929eadc81395306c676d0a8-RequestReducedScript.js" type="text/javascript" ></script><script type="text/javascript">
+// <![CDATA[
+try { jQuery.telligent.evolution.site.configure({baseUrl:'\/',monthNames:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],dayNames:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],authorizationCookieName:'AuthorizationCookie',defaultErrorMessage:'An error occurred.  Please try again or contact your administrator.',defaultMultiErrorMessagePrefix:'The following errors occurred:  ',silverlightFileUploadEnabled:true});
+jQuery.extend($.fn.evolutionUserFileTextBox.defaults,{removeText:'Remove',selectText:'Select\/Upload...',noFileText:'No File Selected'});
+jQuery.telligent.evolution.navigationConfirmation.configure({message:'==============================\r\nUnless you save before leaving this page, you will lose any changes you have made.\r\n=============================='});
+jQuery.telligent.evolution.validation.registerExtensions({passwordInvalidMessage:'Password contains invalid chars ...',passwordRegex:'^.*$',emailInvalidMessage:'Your email address is invalid.',emailRegex:'^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$',usernameInvalidMessage:'Your sign in name does not meet the requirements for this site.',usernameRegex:'^[a-zA-Z0-9_\\- @\\.]+$',emailsInvalidMessage:'One or more emails is invalid',urlInvalidMessage:'URL not in correct format',urlRegex:'^((http|https|mailto|mms):|\/|#|~\/)'});
+jQuery.extend(jQuery.fn.evolutionLike.defaults,{likeText:'Like',unlikeText:'Unlike',modalTitleText:'People who like this',modalShowMoreText:'Show More',whoLikesOtherText:'<a href=\"{user_profile_url}\" class=\"internal-link view-user-profile\">{user_display_name}<\/a> likes this',whoLikesOtherTwoText:'<a href=\"{user_profile_url}\" class=\"internal-link view-user-profile\">{user_display_name}<\/a> and <span class=\"who-likes\">1 other<\/span> like this',whoLikesOtherMultipleText:'<a href=\"{user_profile_url}\" class=\"internal-link view-user-profile\">{user_display_name}<\/a> and <span class=\"who-likes\">{count} others<\/span> like this',whoLikesAccessingText:'You like this',whoLikesAccessingTwoText:'You and <span class=\"who-likes\">1 other<\/span> like this',whoLikesAccessingMultipleText:'You and <span class=\"who-likes\">{count} others<\/span> like this'});
+jQuery.extend(jQuery.fn.evolutionInlineTagEditor.defaults,{editButtonText:'Edit tags',selectTagsText:'Select tags',saveTagsText:'Save',cancelText:'Cancel'});
+jQuery.extend(jQuery.fn.evolutionStarRating.defaults,{titles:['Terrible','Poor','Fair','Average','Good','Excellent'],ratingMessageFormat:'Average rating: {rating} out of {count} ratings.'});
+jQuery.extend(jQuery.fn.evolutionModerate.defaults,{moderateLinkText:'moderate',reportLinkText:'Flag as spam\/abuse',reportedLinkText:'Flagged as spam\/abuse',reportedNotificationMessageText:'{NAME}\'s post has been flagged. <strong>Thank you for your feedback.<\/strong>'});
+} catch(e) { };
+// ]]>
+</script> <script src='http://widgets.membership.s-msft.com/v1/loader.js?brand=TechNet&lang=en-US' type='text/javascript' language='javascript'></script>
+<script type="text/javascript">
+(function($){
+$.telligent.evolution.ui.components['wikipagestory-revisions']  = {
+	add: function(elm, options) {
+        var elm = $(elm), revisions;
+		elm.bind('click', function(e){
+			revisions = revisions || $('#' + elm.data('revisions'));
+            e.preventDefault();
+            if(revisions.is(':visible')) {
+                revisions.stop().slideUp(150);
+                elm.html('Show revision history');
+            } else {
+                revisions.stop().slideDown(150);
+                elm.html('Hide revision history');
+            }
+		});
+	}
+};
+}(jQuery));
+</script><script type="text/javascript">(function($){ $.telligent.evolution.media.defaults.endpoint = 'http://blogs.technet.com/callback.ashx?__type=Telligent.Evolution.Api.Plugins.Endpoints.FileViewerEndpoint%2C%20Telligent.Evolution.Api%2C%20Version%3D7.1.12.36162%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull'; }(jQuery));</script><script type="text/javascript">(function($){ $.telligent.evolution.preview.defaults.endpoint = 'http://blogs.technet.com/callback.ashx?__type=Telligent.Evolution.Api.Plugins.Endpoints.WebPreviewEndpoint%2C%20Telligent.Evolution.Api%2C%20Version%3D7.1.12.36162%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull'; }(jQuery));</script><script type="text/javascript">(function($){ $.telligent.evolution.language.defaults.dateEndpoint = 'http://blogs.technet.com/callback.ashx?__type=Telligent.Evolution.Api.Plugins.Endpoints.DateFormattingEndpoint%2C%20Telligent.Evolution.Api%2C%20Version%3D7.1.12.36162%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull'; }(jQuery));</script>
+                  
+          <link type="text/css" rel="stylesheet" href="/themes/blogs/generic/css/dynamic-style.aspx?AppType=Weblog&WeblogID=4874&PreviewKey=0&Theme=bcea08641f214e839c2b31db680d7bfe" media="screen,print">
+        <meta name="msvalidate.01" content="B717AD6FC29D3A844832AF011B5F9E4C">
+<script src="http://i1.blogs.technet.com/rrcontent/3244a9f1e0ca0d0c3a768d05c765d67c-f9ea371751c980a212ab339cdd1000b2-RequestReducedScript.js" type="text/javascript" ></script><script type="text/javascript">
+_uacct = "UA-4326313-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript"> var _daAnalytics = _daAnalytics || {}; _daAnalytics.init = function (d) {_daAnalytics.Commands = _daAnalytics.Commands || []; for (var a = function (a) { return function () { _daAnalytics.Commands.push([a].concat(Array.prototype.slice.call(arguments, 0))) } }, b = "siteId trackLinkClicks setUserId setProperty setView trackPage trackAction trackEvent trackView setAppId setAccountId setUserId".split(" "), c = 0; c < b.length; c++) _daAnalytics[b[c]] = a(b[c]); _daAnalytics.setAppId(d); var a = document.createElement("script"); a.type = "text/javascript"; a.src = "//az416426.vo.msecnd.net/scripts/da.js"; a.async = !0; var b = document.getElementsByTagName("script")[0]; b.parentNode.insertBefore(a, b); }; _daAnalytics.init("88e924a8-91d0-448c-8108-1c3acb527ac7"); _daAnalytics.trackPage(); </script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blogs.technet.com/b/technetczsk/rsd.ashx">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" title="WLWManifest" href="http://blogs.technet.com/b/technetczsk/wlwmanifest.ashx">
+<title>
+	TechNet Blog CZ/SK - Site Home - TechNet Blogs
+</title><!--[if lt IE 9]><script>document.createElement('header');document.createElement('nav');document.createElement('section');document.createElement('article');document.createElement('aside');document.createElement('footer');document.createElement('hgroup');</script><![endif]--></head>
+	<body spellcheck="true">
+		<form name="aspnetForm" method="post" action="/b/technetczsk/" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTM1MjQyMzYwMmRkfLfsihtL5nfJuC1XXCVzUiopbJ4=">
+</div>
+
+
+<script src="http://i1.blogs.technet.com/rrcontent/2a49544e5aed181db448139b91ad365b-f6ffb7170f242559f9a9b7dfe9ade696-RequestReducedScript.js" type="text/javascript" ></script>
+			
+                
+            
+            
+                <div class="header-fragments-header"></div>
+<div class="header-fragments minimal Chrome">   <div class="header-fragment-outer top-bar wireframe-header-fragment-outer wireframe-top-bar">       <div class="header-fragment-inner top-bar wireframe-header-fragment-inner wireframe-top-bar">           <div class="header-fragment welcome-message">               <!-- always render -->           </div>           <div class="header-fragment login-logout">               <div class="navigation-list-header"></div>               <ul class="navigation-list">                   <li class="navigation-item">                       <span class="internal-link live-id-button">                           <a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;wtrealm=blogs.technet.com&amp;wreply=https%3a%2f%2fblogs.technet.com%2fb%2ftechnetczsk%2fdefault.aspx%3fstoAI%3d10&amp;wp=MBI_FED_SSL&amp;wlcxt=microsoft%24microsoft%24microsoft" title="Sign in">Sign in</a>                       </span>                   </li>               </ul>               <div class="navigation-list-footer"></div>           </div>           <div class="header-fragment user-welcome-without-login">               &nbsp;<!-- always render -->               <span class="user-name">                   <a class="internal-link view-user-profile" href="">                       <span></span>                   </a>               </span>                          </div>       </div>   </div><div class="header-fragment-outer wireframe-header-fragment-outer site-banner">    <div class="header-fragment-inner wireframe-header-fragment-inner site-banner">        <div class="header-fragment site-banner">            <div class="site-banner-header"></div>            <div class="site-banner"></div>            <div class="site-banner-footer"></div>        </div>    </div></div></div><div class="header-fragments-footer"></div>
+            
+			    <div class="content-fragment-page postlist" id="ctl00_content_ctl00_page"><div class="layout">
+<div class="layout-header"></div>
+<div class="layout-content header-top-sidebar-left-content-center-sidebar-right" id="ctl00_content_ctl00_layout">
+<div class="layout-region header" id="ctl00_content_ctl00_header">
+<div class="layout-region-inner header"><div class="content-fragment raw-html no-wrapper" id="fragment-26971">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-content">
+<div class="user-defined-markup"><script src="http://i1.blogs.technet.com/rrcontent/f378908927a2d572cf8d313d4ceb3505-8a8eeb5f3e9119c7fd99b8e49ee41040-RequestReducedScript.js" type="text/javascript" ></script>
+
+<ul id="top-menu">
+                      <li> <a href="http://blogs.technet.com/b/technetczsk/about.aspx">O blogu</a> </li>
+                      <li> <a href="http://blogs.technet.com/b/technetczsk/contact.aspx">Kontakt na autory</a> </li>
+                      <li> <a href="http://blogs.technet.com/b/technetczsk/rss.aspx">RSS pro příspěvky</a> </li>
+                      <li> <a href="http://blogs.technet.com/b/technetczsk/atom.aspx">RSS Atom</a> </li>
+                      <!--<li>
+                        <a href="#">Partneři</a>
+                      </li>
+                      <li>
+                        <a href="#">Vývojáři</a>
+                      </li>
+                      <li>
+                        <a href="#">Odkazy</a>
+                      </li>-->
+                    </ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-bread-crumbs no-wrapper-with-spacing" id="fragment-26964">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+
+
+<div class="breadcrumb-list-header"></div>
+<div class="breadcrumb-list">
+	<span class="breadcrumb-item"><a href="/" class="internal-link view-home"><span></span>TechNet Blogs</a></span>
+
+	
+			<span class="separator"> &raquo; </span>
+		<span class="breadcrumb-item"><a href="/b/technetczsk/default.aspx"><span></span>TechNet Blog CZ/SK</a></span>
+	
+	
+	</div>
+<div class="breadcrumb-list-footer"></div>
+			</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-title full-border" id="fragment-26965">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+	
+	<h1 class="title">TechNet Blog CZ/SK</h1>
+		</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+<div class="layout-region left-sidebar" id="ctl00_content_ctl00_left-sidebar">
+<div class="layout-region-inner left-sidebar"><div class="content-fragment raw-html no-wrapper-with-spacing with-header" id="fragment-45589">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Nepřehlédněte</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><ul class="content-list">
+<li class="content-item"><a href="https://msevents.microsoft.com/CUI/AdvancedSearch.aspx?culture=cs-CZ#culture=cs-CZ;advanced=true;sortKey=;sortOrder=;pageEvent=false;startDate=17.3.2013;endDate=1.1.2015;kwdAny=;countryId=CZ;languageCode=cs;audience=32;eventType=1;searchcontrol=yes;s=1">Nadcházející IT akce</a></li></ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment search-form no-wrapper-with-spacing with-header" id="fragment-82738">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>
+        Vyhledávání
+      </div></div>
+<div class="content-fragment-content">
+
+<div class="field-list-header">
+</div>
+<fieldset class="field-list">
+    <ul class="field-list">
+        <li class="field-item search">
+            <div id="search-allblogs-container">
+                <span class="field-item-input">
+                    <input id="SearchTextBox_AllBlogs" name="SearchTextBox_AllBlogs" type="text" class="searchField" maxlength="64" size="45" autocomplete="off">
+                    <input id="SearchButton_AllBlogs" name="SearchButton_AllBlogs" type="button" class="search-button">
+                </span>
+            </div>
+            <div id="search-thisblog-container">
+                <span class="field-item-input">
+                    <input id="SearchTextBox_ThisBlog" name="SearchTextBox_ThisBlog" type="text" class="searchField" maxlength="64" size="45" autocomplete="off">
+                    <input id="SearchButton_ThisBlog" name="SearchButton_ThisBlog" type="button" class="search-button">
+               </span>
+            </div>
+        </li>
+    </ul>
+</fieldset>
+<div class="field-list-footer">
+    <div id="search-switch-container">
+        <span style="display: inline-block">
+            <input type="radio" name="SearchTypeRadio" value="ThisBlog" id="ThisBlog" checked="checked"><label for="ThisBlog" id="ThisBlogText">Search this blog</label>
+        </span>
+        <span style="display: inline-block">
+            <input type="radio" name="SearchTypeRadio" value="AllBlogs" id="AllBlogs"><label for="AllBlogs" id="AllBlogsText">Search all blogs</label>
+        </span>
+    </div>
+</div>
+<script type="text/javascript">
+(function($){
+  var elmSearchAll = $('#search-allblogs-container').hide();
+  var elmSearchThis = $('#search-thisblog-container');
+  
+  $(document).ready(function() {
+      $('#ThisBlog').click(function () {
+          var self = $(this);
+          if (self.is(':checked')) {
+              elmSearchAll.hide();
+              elmSearchThis.show();
+          }
+      });
+    
+      $('#AllBlogs').click(function () {
+          var self = $(this);
+          if (self.is(':checked')) {
+              elmSearchThis.hide();
+              elmSearchAll.show();
+          }
+      });
+  });
+})(jQuery);
+</script>
+<script type="text/javascript" language="javascript" src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?refinement=61&brand=Technet&boxid=SearchTextBox_AllBlogs&btnid=SearchButton_AllBlogs&focusOnInit=false&beta=0&overrideWatermark=false"></script>
+  <script type="text/javascript" language="javascript" src="http://i4.services.social.microsoft.com/Search/Widgets/SearchBox.jss?rn=TechNet%20Blog%20CZ%2FSK&rq=site%3Ablogs.technet.com%2Fb%2Ftechnetczsk%2F&brand=Technet&boxid=SearchTextBox_ThisBlog&btnid=SearchButton_ThisBlog&focusOnInit=false&beta=0&overrideWatermark=false"></script>
+</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-links no-wrapper-with-spacing with-header" id="fragment-82739">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>
+Možnosti
+			</div></div>
+<div class="content-fragment-content">
+
+  
+<div class="navigation-list-header"></div>
+<ul class="navigation-list">
+															<li class="navigation-item"><a href="/b/technetczsk/default.aspx" class="internal-link view-application"><span></span>Home</a></li>
+																													<li class="navigation-item"><a href="/b/technetczsk/contact.aspx" class="internal-link view-contact"><span></span>Email Blog Author</a></li>
+																													<li class="navigation-item"><a href="/b/technetczsk/about.aspx" class="internal-link view-user-profile"><span></span>About</a></li>
+																																																																												      																	<li class="navigation-item"><a href="/b/technetczsk/rss.aspx" class="internal-link rss"><span></span>RSS for posts</a></li>
+																														</ul>
+<div class="navigation-list-footer"></div>
+			</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment raw-html no-wrapper-with-spacing with-header" id="fragment-45145">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Kontaktujte nás</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><div class="information-source-section no-title">
+                        <ul class="content-list">
+                          <li class="content-item"><a href="http://blogs.technet.com/technetczsk/pages/it-pro-tym-ceska-a-slovenska-republika.aspx">IT Pro tým</a> (kontakty)</li>
+                          <li class="content-item"><a href="http://blogs.technet.com/technetczsk/articles/434942.aspx">BLOGEŘI TN blogu</a></li>
+                        </ul>
+ </div>
+</div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment html-content no-wrapper-with-spacing with-header" id="fragment-82666">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>
+Zdroje informací
+	</div></div>
+<div class="content-fragment-content">
+
+<div class="user-defined-markup" style="">
+<p><span style="font-size:16px;font-weight:bold">Microsoft TechNet</span><ul><li><a href="http://www.technetweb.cz" style="font-size:12px">TechNet Web</a><br>Hlavní zdroj tech. informací z Microsoftu</li><li><a href="http://www.technetflash.cz" style="font-size:12px">TechNet Flash zpravodaj</a><br>El. zpravodaj pro IT odborníky s články od CZ/SK autorů</li><li><a href="http://technet.microsoft.com/cs-cz/evalcenter/bb736013.aspx" style="font-size:12px">TechNet Evaluation Center</a><br>Více informací o přicházejících beta produktech a novinkách</li><li><a href="http://social.technet.microsoft.com/Forums/cs-CZ/categories/" style="font-size:12px">TechNet Fóra</a><br>Máte problém? Zkuste ho vyřešit v rámci TechNet diskuzních fór o Microsoft technologiích</li></ul></p><p><span style="font-size:16px;font-weight:bold">IT odborn&#237;ci ve školstv&#237;</span><ul><li><a href="http://www.netstudent.cz/" style="font-size:12px">Net Student</a><br>Portál zaměřený primárně na studenty VŠ. Informace o akcích, novinkách a zajímavé články.</li><li><a href="http://www.microsoft.com/cze/education/" style="font-size:12px">Portál školství a vzdělávání</a><br>Komplexní rozcestník školských informací</li><li><a href="http://www.imaginecup.cz/" style="font-size:12px">Imagine Cup</a><br>Prestižní soutěž pro studenty</li><li><a href="http://www.dreamspark.cz/" style="font-size:12px">DreamSpark</a><br>Software zdarma</li><li><a href="http://msdn.microsoft.com/cs-cz/ff898347.aspx" style="font-size:12px">DreamSpark Premium</a><br>Software pro IT zaměřené školy</li></ul></p><p><span style="font-size:16px;font-weight:bold">RSS zdoje (CZ/SK)</span><ul><li><a href="http://www.microsoft.com/cze/digitalni-svet/spojte-se.aspx" style="font-size:12px">Microsoft - spojte se s námi</a></li><li><a href="http://blogs.technet.com/technetczsk/rss.xml" style="font-size:12px">TechNet Blog RSS</a><br>RSS kanál k tomuto blogu</li><li><a href="http://www.mstv.cz/it/rss" style="font-size:12px">IT.MSTV.CZ</a><br>Odebírejte RSS z naší televize, kde najdete technické screencasty a záznamy přednášek.</li></ul></p><p><span style="font-size:16px;font-weight:bold">V&#253;voj&#225;ři</span><ul><li><a href="http://blogs.msdn.com/vyvojari" style="font-size:12px">MSDN CZ Blog</a><br>Náš sesterský blog, primárně určen vývojářům, ale se spoustou zajímavých informací.</li><li><a href="http://www.microsoft.com/cze/msdn" style="font-size:12px">MSDN Česká republika</a><br>Hlavní portál českého MSDN, kde najdete vše kolem vývoje softwaru.</li></ul></p><p><span style="font-size:16px;font-weight:bold">Downloads</span><ul><li><a href="http://blogs.technet.com/b/trm/archive/2012/09.aspx" style="font-size:12px">Září 2012</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2012/10.aspx" style="font-size:12px">Říjen 2012</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2012/12.aspx" style="font-size:12px">Prosinec 2012</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/01.aspx" style="font-size:12px">Leden 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/02.aspx" style="font-size:12px">Únor 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/04.aspx" style="font-size:12px">Duben 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/05.aspx" style="font-size:12px">Květen 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/08.aspx" style="font-size:12px">Srpen 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/09.aspx" style="font-size:12px">Září 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/10.aspx" style="font-size:12px">Říjen 2013</a></li><li><a href="http://blogs.technet.com/b/trm/archive/2013/10.aspx" style="font-size:12px">Listopad 2013</a></li></ul></p><p><span style="font-size:16px;font-weight:bold">CZ/SK Blogy</span><ul><li><a href="http://blogs.technet.com/windowscz/" style="font-size:12px">Windows 8 blog</a></li></ul></p><p><span style="font-size:16px;font-weight:bold">Vše pro web</span><ul><li><a href="http://www.microsoft.cz/web" style="font-size:12px">Web portál</a><br>Nabídka společnosti Microsoft na poli webových technologií, aplikací a hotových řešení v jednom uceleném balíčku.</li></ul></p>
+</div>
+		</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+<div class="layout-region right-sidebar" id="ctl00_content_ctl00_right-sidebar">
+<div class="layout-region-inner right-sidebar"><div class="content-fragment raw-html no-wrapper with-header" id="fragment-26974">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Pozvánka</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><div align="center"><a href="http://www.teched.cz/?utm_source=Technet_blog&utm_medium=banner&utm_campaign=TechEd_2014" target="_blank"><img src="http://www.itevangelist.cz/blog/gopt.jpg" alt="GOPAS TechEd 2014" border="0"></a></div></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment raw-html no-wrapper with-header" id="fragment-29710">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Více o…</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><ul class="content-list">
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/cloud-computing.aspx">Cloud Computing</a></li>
+ <li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/microsoft-virtualizace.aspx">Virtualizace</a></li>
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/microsoft-hyper-v.aspx">Hyper-V</a></li>
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/microsoft-system-center.aspx">System Center</a></li>
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/privatni-cloud.aspx">Privátní cloud</a></li>
+ <li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/office-365.aspx">Office 365</a></li> 
+ <li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/windows-intune.aspx">Windows Intune</a></li>
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/windows-home-server.aspx">Windows Home Server</a></li> 
+<li class="content-item"><a href="http://blogs.technet.com/b/technetczsk/p/windows8.aspx">Windows 8</a></li>
+</ul></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment raw-html no-wrapper with-header" id="fragment-27006">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>Facebook</div></div>
+<div class="content-fragment-content">
+<div class="user-defined-markup"><iframe src="http://www.facebook.com/plugins/likebox.php?id=123122652173&amp;width=170&amp;connections=10&amp;stream=false&amp;header=true&amp;height=300" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:170px; height:300px;" allowtransparency="true"></iframe></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment tag-cloud no-wrapper with-header" id="fragment-26968">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>
+Tags
+			</div></div>
+<div class="content-fragment-content">
+
+
+		
+
+			
+		
+				
+		
+	
+
+	<div class="tag-list-header"></div>
+	<ul class="tag-list">
+		<li class="tag-item level-1">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Announcements/default.aspx" rel="nofollow tag"><span></span>Announcements</a>
+			</li>
+		<li class="tag-item level-4">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Cloud/default.aspx" rel="nofollow tag"><span></span>Cloud</a>
+			</li>
+		<li class="tag-item level-4">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Communities/default.aspx" rel="nofollow tag"><span></span>Communities</a>
+			</li>
+		<li class="tag-item level-2">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Computer+Security/default.aspx" rel="nofollow tag"><span></span>Computer Security</a>
+			</li>
+		<li class="tag-item level-5">
+											
+				
+														<a href="/b/technetczsk/archive/tags/desktop+applications/default.aspx" rel="nofollow tag"><span></span>desktop applications</a>
+			</li>
+		<li class="tag-item level-1">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Downloads/default.aspx" rel="nofollow tag"><span></span>Downloads</a>
+			</li>
+		<li class="tag-item level-2">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Events/default.aspx" rel="nofollow tag"><span></span>Events</a>
+			</li>
+		<li class="tag-item level-5">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Exchange+Server/default.aspx" rel="nofollow tag"><span></span>Exchange Server</a>
+			</li>
+		<li class="tag-item level-6">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Hyper_2D00_V/default.aspx" rel="nofollow tag"><span></span>Hyper-V</a>
+			</li>
+		<li class="tag-item level-2">
+											
+				
+														<a href="/b/technetczsk/archive/tags/network+administration/default.aspx" rel="nofollow tag"><span></span>network administration</a>
+			</li>
+		<li class="tag-item level-1">
+											
+				
+														<a href="/b/technetczsk/archive/tags/news+items/default.aspx" rel="nofollow tag"><span></span>news items</a>
+			</li>
+		<li class="tag-item level-6">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Office/default.aspx" rel="nofollow tag"><span></span>Office</a>
+			</li>
+		<li class="tag-item level-3">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Pages/default.aspx" rel="nofollow tag"><span></span>Pages</a>
+			</li>
+		<li class="tag-item level-2">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Relax/default.aspx" rel="nofollow tag"><span></span>Relax</a>
+			</li>
+		<li class="tag-item level-6">
+											
+				
+														<a href="/b/technetczsk/archive/tags/SK/default.aspx" rel="nofollow tag"><span></span>SK</a>
+			</li>
+		<li class="tag-item level-3">
+											
+				
+														<a href="/b/technetczsk/archive/tags/System+Center/default.aspx" rel="nofollow tag"><span></span>System Center</a>
+			</li>
+		<li class="tag-item level-1">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Tips/default.aspx" rel="nofollow tag"><span></span>Tips</a>
+			</li>
+		<li class="tag-item level-4">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Virtualization/default.aspx" rel="nofollow tag"><span></span>Virtualization</a>
+			</li>
+		<li class="tag-item level-6">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Webcasts/default.aspx" rel="nofollow tag"><span></span>Webcasts</a>
+			</li>
+		<li class="tag-item level-4">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows+Server/default.aspx" rel="nofollow tag"><span></span>Windows Server</a>
+			</li>
+		<li class="tag-item level-3">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows+Server+2008/default.aspx" rel="nofollow tag"><span></span>Windows Server 2008</a>
+			</li>
+		<li class="tag-item level-5">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows+Server+2012/default.aspx" rel="nofollow tag"><span></span>Windows Server 2012</a>
+			</li>
+		<li class="tag-item level-4">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows+Vista/default.aspx" rel="nofollow tag"><span></span>Windows Vista</a>
+			</li>
+		<li class="tag-item level-5">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows7/default.aspx" rel="nofollow tag"><span></span>Windows7</a>
+			</li>
+		<li class="tag-item level-6">
+											
+				
+														<a href="/b/technetczsk/archive/tags/Windows8/default.aspx" rel="nofollow tag"><span></span>Windows8</a>
+			</li>
+	</ul>
+	<div class="tag-list-footer"></div>
+	</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-archive-list no-wrapper with-header" id="fragment-26969">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-header"><div>
+Archives
+	</div></div>
+<div class="content-fragment-content">
+
+
+
+<div class="content-list-header"></div>
+<div class="content-list-name">Archives</div>
+<ul class="content-list">
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2014/05.aspx">May 2014</a> (15)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2014/04.aspx">April 2014</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2014/03.aspx">March 2014</a> (27)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2014/02.aspx">February 2014</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2014/01.aspx">January 2014</a> (27)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/12.aspx">December 2013</a> (19)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/11.aspx">November 2013</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/10.aspx">October 2013</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/09.aspx">September 2013</a> (25)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/08.aspx">August 2013</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/07.aspx">July 2013</a> (31)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/06.aspx">June 2013</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/05.aspx">May 2013</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/04.aspx">April 2013</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/03.aspx">March 2013</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/02.aspx">February 2013</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2013/01.aspx">January 2013</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/12.aspx">December 2012</a> (22)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/11.aspx">November 2012</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/10.aspx">October 2012</a> (34)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/09.aspx">September 2012</a> (29)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/08.aspx">August 2012</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/07.aspx">July 2012</a> (29)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/06.aspx">June 2012</a> (43)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/05.aspx">May 2012</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/04.aspx">April 2012</a> (34)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/03.aspx">March 2012</a> (34)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/02.aspx">February 2012</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2012/01.aspx">January 2012</a> (25)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/12.aspx">December 2011</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/11.aspx">November 2011</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/10.aspx">October 2011</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/09.aspx">September 2011</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/08.aspx">August 2011</a> (35)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/07.aspx">July 2011</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/06.aspx">June 2011</a> (34)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/05.aspx">May 2011</a> (27)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/04.aspx">April 2011</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/03.aspx">March 2011</a> (31)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/02.aspx">February 2011</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2011/01.aspx">January 2011</a> (19)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/12.aspx">December 2010</a> (20)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/11.aspx">November 2010</a> (19)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/10.aspx">October 2010</a> (16)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/09.aspx">September 2010</a> (17)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/08.aspx">August 2010</a> (23)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/07.aspx">July 2010</a> (12)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/06.aspx">June 2010</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/05.aspx">May 2010</a> (14)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/04.aspx">April 2010</a> (36)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/03.aspx">March 2010</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/02.aspx">February 2010</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2010/01.aspx">January 2010</a> (19)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/12.aspx">December 2009</a> (16)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/11.aspx">November 2009</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/10.aspx">October 2009</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/09.aspx">September 2009</a> (21)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/08.aspx">August 2009</a> (27)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/07.aspx">July 2009</a> (36)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/06.aspx">June 2009</a> (32)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/05.aspx">May 2009</a> (40)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/04.aspx">April 2009</a> (44)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/03.aspx">March 2009</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/02.aspx">February 2009</a> (20)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2009/01.aspx">January 2009</a> (21)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/12.aspx">December 2008</a> (15)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/11.aspx">November 2008</a> (18)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/10.aspx">October 2008</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/09.aspx">September 2008</a> (20)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/08.aspx">August 2008</a> (25)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/07.aspx">July 2008</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/06.aspx">June 2008</a> (18)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/05.aspx">May 2008</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/04.aspx">April 2008</a> (24)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/03.aspx">March 2008</a> (32)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/02.aspx">February 2008</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2008/01.aspx">January 2008</a> (29)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/12.aspx">December 2007</a> (22)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/11.aspx">November 2007</a> (25)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/10.aspx">October 2007</a> (39)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/09.aspx">September 2007</a> (25)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/08.aspx">August 2007</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/07.aspx">July 2007</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/06.aspx">June 2007</a> (33)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/05.aspx">May 2007</a> (36)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/04.aspx">April 2007</a> (30)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/03.aspx">March 2007</a> (34)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/02.aspx">February 2007</a> (39)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2007/01.aspx">January 2007</a> (36)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/12.aspx">December 2006</a> (28)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/11.aspx">November 2006</a> (38)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/10.aspx">October 2006</a> (39)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/09.aspx">September 2006</a> (26)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/08.aspx">August 2006</a> (32)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/07.aspx">July 2006</a> (19)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/06.aspx">June 2006</a> (23)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/05.aspx">May 2006</a> (23)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/04.aspx">April 2006</a> (29)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/03.aspx">March 2006</a> (13)
+	</li>
+	<li class="content-item">
+		<a class="internal-link view-post-archive-list" href="/b/technetczsk/archive/2006/02.aspx">February 2006</a> (6)
+	</li>
+</ul>
+<div class="content-list-footer"></div>
+
+	</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+<div class="layout-region content" id="ctl00_content_ctl00_content">
+<div class="layout-region-inner content"><div class="content-fragment raw-html no-wrapper" id="fragment-39945">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-content">
+<div class="user-defined-markup"><p><div align="center"><a href="http://technet.microsoft.com/en-us/evalcenter/default"><img src="http://www.itevangelist.cz/blog/w2012ban.jpg" border="0"></a></div></p></div></div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+<div class="content-fragment blog-post-list no-wrapper" id="fragment-93311">
+<div class="content-fragment-inner fiji-content-fragment-inner msdn-content-fragment-inner msdntechnet"><div class="content-fragment-top fiji-content-fragment-top msdn-content-fragment-top"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div><div class="content-fragment-content">
+
+
+  <style type="text/css">
+			.attribute-value.reply-count ,.count.reply-count {
+				background: url(/cfs-file.ashx/__key/defaultwidgets/7bb87a0cc5864a9392ae5b9e5f9747b7-dd895400883f4f43beca9fd9376a55b1/icon_2D00_comments.png) 0 50% no-repeat; 
+				padding-left: 18px; 
+				margin-left: 15px;
+			}
+		</style>
+
+
+
+
+		
+
+	
+
+
+
+																		
+	
+
+
+
+
+
+
+<div class="navigation-list-header"></div>
+<div class="navigation-list-footer"></div>
+
+<div>
+	<div class="filter">
+
+		<div class="query-type">
+			<span class="filter-label">Sort by: </span>
+			<span class="filter-option  selected ">
+				<a href="/b/technetczsk/?PostSortBy=MostRecent&amp;pi93311=1">
+					Most Recent
+				</a>
+			</span>
+			<span class="separator">|</span>
+			<span class="filter-option ">
+				<a href="/b/technetczsk/?PostSortBy=MostViewed&amp;pi93311=1">
+					Most Views
+				</a>
+			</span>
+			<span class="separator">|</span>
+			<span class="filter-option ">
+				<a href="/b/technetczsk/?PostSortBy=MostComments&amp;pi93311=1">
+					Most Comments
+				</a>
+			</span>
+		</div>
+
+		<div class="view-type">
+			<span class="filter-option  selected  ">
+				<a href="#" title="Excerpt View" class="internal-link view-list">
+					Excerpt View
+				</a>
+			</span>
+			<span class="separator">|</span>
+			<span class="filter-option  ">
+				<a href="#" title="Full Post View" class="internal-link view-detail-list">
+					Full Post View
+				</a>
+			</span>
+		</div>
+
+	</div>
+
+	<div class="content-list-header standard"></div>
+	<ul class="content-list standard">
+		
+        <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/20/prirucka-pro-nasazeni-branchcache.aspx" class="internal-link view-post">
+                    <span></span>Př&#237;ručka pro nasazen&#237; BranchCache
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">12 hours ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="bc62c0e3-cd6f-4f46-a4ee-d8bb4cec0f69" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            BranchCache je technologie, kter&aacute; umožňuje sd&iacute;let v r&aacute;mci lok&aacute;ln&iacute; s&iacute;tě obsah, stažen&yacute; z webov&eacute; str&aacute;nky či s&iacute;ťov&eacute;ho sd&iacute;len&iacute;, a typicky je využ&iacute;v&aacute;na...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/19/mva-kurz-nasazeni-modernich-aplikaci-do-windows-8-1.aspx" class="internal-link view-post">
+                    <span></span>MVA kurz: Nasazen&#237; modern&#237;ch aplikac&#237; do Windows 8.1
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">1 day ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="3f42edd0-4ffb-4cea-8ecb-33780617705c" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Na t&eacute;ma instalace modern&iacute;ch aplikac&iacute; do Windows 8.1 bez použit&iacute; veřejn&eacute;ho Windows Store, neboli využit&iacute; sideloadingu aplikac&iacute;, jsme na TN blogu již několik čl&aacute;nků, ov&scaron;em dosud nejrozs&aacute;hlej&scaron;&iacute;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/16/aplikacni-okenko-machinarium.aspx" class="internal-link view-post">
+                    <span></span>Aplikačn&#237; ok&#233;nko: Machinarium
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">4 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="fcdff5e2-1f56-49e4-a63a-12fed4a59286" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/16/aplikacni-okenko-machinarium.aspx#comments">
+                                                                    <span class="attribute-value reply-count">1</span>
+																			<span>Comment</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Machinarium je celosvětově velmi &uacute;spě&scaron;n&aacute; dobrodružn&aacute; hra od tvůrců popul&aacute;rn&iacute;ho Samorostu a Botaniculy, nez&aacute;visl&eacute;ho česk&eacute;ho studia Amanita Design. 
+ Hlavn&iacute; hrdina, mal&yacute; rezav&yacute;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/15/prichazi-mdop-2014-spolecne-s-mbam-2-5-a-app-v-5-0-sp2.aspx" class="internal-link view-post">
+                    <span></span>Přich&#225;z&#237; MDOP 2014 společně s MBAM 2.5 a App-V 5.0 SP2
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">5 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="85ba98e4-4ff9-42d0-a992-35c9f59be6d6" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/15/prichazi-mdop-2014-spolecne-s-mbam-2-5-a-app-v-5-0-sp2.aspx#comments">
+                                                                    <span class="attribute-value reply-count">2</span>
+																			<span>Comments</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            1. května společnosti Microsoft uvolnila novou verzi bal&iacute;čku MDOP . Pod touto zkratkou se skr&yacute;v&aacute; takzvan&yacute; Microsoft Desktop Optimization Pack , kter&yacute; je dostupn&yacute; pro z&aacute;kazn&iacute;ky s multilicenčn&iacute;mi...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/14/sql-server-2014-ve-virtualnim-labu.aspx" class="internal-link view-post">
+                    <span></span>SQL Server 2014 ve virtu&#225;ln&#237;m labu
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">6 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="0d88b8d2-526c-45c0-8f63-7767e9ee840e" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Microsoft prvn&iacute;ho dubna ofici&aacute;lně vydal nov&yacute; SQL Server 2014, kter&yacute; přin&aacute;&scaron;&iacute; řadu nov&yacute;ch funkc&iacute; pro zv&yacute;&scaron;en&iacute; v&yacute;konu, zabezpečen&iacute;, vysok&eacute; dostupnosti...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/13/windows-8-1-update-co-noveho-v-powershell-a-export-ovladacu.aspx" class="internal-link view-post">
+                    <span></span>Windows 8.1 Update: Co nov&#233;ho v PowerShell a Export ovladačů
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">7 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="c892baf4-27ff-401a-b758-e808eab48397" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/13/windows-8-1-update-co-noveho-v-powershell-a-export-ovladacu.aspx#comments">
+                                                                    <span class="attribute-value reply-count">1</span>
+																			<span>Comment</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Ve Windows 8.1 Update jsou kromě novinek v uživatelsk&eacute;m rozhran&iacute; k dispozici i novinky v PowerShellu: 
+ 
+ Function: Enable-StorageEnclosureIdentification (Storage) - Povol&iacute; identifikaci pomoc&iacute; LED na storage enclosure, slotech...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/12/migrujeme-z-windows-serveru-2003.aspx" class="internal-link view-post">
+                    <span></span>Migrujeme z Windows Serveru 2003
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">8 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="37fb65c7-5fc8-49b3-94c6-55ec3c904bb0" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/12/migrujeme-z-windows-serveru-2003.aspx#comments">
+                                                                    <span class="attribute-value reply-count">1</span>
+																			<span>Comment</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Ukončen&iacute; podpory Windows XP již m&aacute;me za sebou, dal&scaron;&iacute;m v&yacute;znamn&yacute;m miln&iacute;kem tak bude ukončen&iacute; podpory serverov&eacute;ho OS Windows Server 2003, ke kter&eacute; dojde 14. července 2015. A protože rok...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/09/aplikacni-okenko-zlate-stranky-cz.aspx" class="internal-link view-post">
+                    <span></span>Aplikačn&#237; ok&#233;nko: Zlat&#233;Str&#225;nky.cz
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">11 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="1a7dcdf8-705e-4f3e-a3f2-93aa645b5973" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Společnost Mediatel pro v&aacute;s připravuje již v&iacute;ce jak 20 let jednu z největ&scaron;&iacute;ch on-line datab&aacute;z&iacute; firem v ČR - Zlat&eacute;Str&aacute;nky.cz 
+ Zlat&eacute; str&aacute;nky poskytuj&iacute; ty nejaktu&aacute;lněj&scaron;&iacute;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/07/setkani-windows-user-group-kveten-2014.aspx" class="internal-link view-post">
+                    <span></span>Setk&#225;n&#237; Windows User Group – květen 2014
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">13 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="12650a5c-6256-491c-9a73-eb43483d6421" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Od 20. května do 23. května tak&eacute; prob&iacute;h&aacute; v Praze již 12. ročn&iacute;k tradičn&iacute; konference GOPAS TechEd - DevCon 2014 . Tě&scaron;it se můžete na informace a novinky ze světa IT a produktů i technologi&iacute; společnosti Microsoft...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/06/serial-windows-powershell-prejimani-skriptu-z-internetu-cast-46.aspx" class="internal-link view-post">
+                    <span></span>Seri&#225;l Windows PowerShell Přej&#237;m&#225;n&#237; skriptů z internetu (č&#225;st 46.)
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">13 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="c830a232-ddaa-443c-ad52-00caa6d1dbc0" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/06/serial-windows-powershell-prejimani-skriptu-z-internetu-cast-46.aspx#comments">
+                                                                    <span class="attribute-value reply-count">4</span>
+																			<span>Comments</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Dnes bych r&aacute;d nav&aacute;zal na jeden z posledn&iacute;ch čl&aacute;nků, kde jsem mluvil o použ&iacute;v&aacute;n&iacute; WhatIf. Byl jsem pož&aacute;d&aacute;n o pomoc při ře&scaron;en&iacute; probl&eacute;mu se stažen&yacute;m skriptem &ndash;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/06/windows-phone-8-1-enterprise-preview.aspx" class="internal-link view-post">
+                    <span></span>Windows Phone 8.1 Enterprise Preview
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">14 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="574766cc-8fdd-4bc7-a996-160bc2f02c28" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Na konferenci Build byla kromě jin&yacute;ch novinek představena i Preview verze operačn&iacute;ho syst&eacute;mu pro chytr&eacute; telefony Windows Phone 8.1. Ač se na toto t&eacute;ma hojně diskutovalo zejm&eacute;na ve v&yacute;voj&aacute;řsk&eacute;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/05/vybrana-skoleni-skolicich-stredisek-cerven-2014.aspx" class="internal-link view-post">
+                    <span></span>Vybran&#225; školen&#237; školic&#237;ch středisek – červen 2014
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">14 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="a0bb3296-2f8a-4441-88d1-5c5fce3c8898" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Gopas Brno, 2-6.6.2014 - System Center Virtual Machine Manager 2012 &ndash; nasazen&iacute; a spr&aacute;va Bratislava, 2-6.6.2014 - Windows 8 &ndash; nasazen&iacute; a spr&aacute;va Praha, 2-6.6.2014 - Windows Server 2012 &ndash; nasazen&iacute; a spr&aacute;va...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/05/ke-stazeni-microsoft-virtual-machine-converter-2-0.aspx" class="internal-link view-post">
+                    <span></span>Ke stažen&#237;: Microsoft Virtual Machine Converter 2.0
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">15 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="985bf185-5bda-4cee-bd02-38740e52f08a" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/05/ke-stazeni-microsoft-virtual-machine-converter-2-0.aspx#comments">
+                                                                    <span class="attribute-value reply-count">1</span>
+																			<span>Comment</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Zač&aacute;tkem dubna Microsoft uvolnil zdarma ke stažen&iacute; aktualizovanou verzi n&aacute;stroje Virtual Machine Converter. Tento n&aacute;stroj (jak jeho n&aacute;zev napov&iacute;d&aacute;) slouž&iacute; k převodu virtu&aacute;ln&iacute;ch strojů...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/02/aplikacni-okenko-remote-desktop-preview.aspx" class="internal-link view-post">
+                    <span></span>Aplikačn&#237; ok&#233;nko: Remote Desktop Preview
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">18 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="12c85c4f-183f-40ac-bec6-6047235ab33b" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Uživatel&eacute; Windows Phone už nyn&iacute; nemus&iacute; z&aacute;vidět sv&yacute;m kolegům se zař&iacute;zen&iacute;mi Apple a Android. Společnosti Microsoft uvolnila Preview aplikace Remote Desktop i pro vlastn&iacute; OS určen&yacute; pro mobiln&iacute;...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/05/01/kriticka-aktualizace-ie-ms14-021.aspx" class="internal-link view-post">
+                    <span></span>Kritick&#225; aktualizace IE (ms14-021)
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">18 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/14929/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=kfl-ms&amp;size=large" alt="KFL-MS}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='f6cc9538-7c51-4e51-9c69-fd4e894a7573'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/KFL-MS"><span></span>KFL-MS</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="2b11d88a-8524-4872-8a08-f4e98d1ad7c2" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            V posledn&iacute; Security Advisory byla pops&aacute;na bezpečnostn&iacute; chyba Internet Exploreru, d&iacute;ky kter&eacute; mohl &uacute;točn&iacute;k převz&iacute;t kontrolu nad vzd&aacute;len&yacute;m poč&iacute;tačem. Postiženy byly v&scaron;echny...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/30/kvetnove-it-campy-virtualizace-v-podani-microsoftu-a-windows-8-1-v-podnikove-siti.aspx" class="internal-link view-post">
+                    <span></span>Květnov&#233; IT Campy: Virtualizace v pod&#225;n&#237; Microsoftu a Windows 8.1 v podnikov&#233; s&#237;ti
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">20 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="27d164ee-c37a-41b7-bb28-803fd94c7b53" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/30/kvetnove-it-campy-virtualizace-v-podani-microsoftu-a-windows-8-1-v-podnikove-siti.aspx#comments">
+                                                                    <span class="attribute-value reply-count">2</span>
+																			<span>Comments</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            V prvn&iacute; polovině května m&aacute;me pro v&aacute;s připraven&eacute; dva IT Campy: 
+ 
+ 5.5.2014, Praha &ndash; Virtualizace v pod&aacute;n&iacute; Microsoftu 
+ Virtualizačn&iacute; IT Camp v&aacute;m předvede možnosti, kter&eacute; virtualizace...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/30/aktualizace-a-lokalizace-rms-sharing-app.aspx" class="internal-link view-post">
+                    <span></span>Aktualizace a lokalizace RMS Sharing App
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">20 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="542fdbd1-506b-46fc-b1ca-ac5b2c41b17e" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Produktov&yacute; t&yacute;m okolo technologie RMS (Rights Management Services) uvedl na světlo světa aktualizaci pro RMS Sharing App, a to pro v&scaron;echny podporovan&eacute; platformy, tedy Windows, iOS, Android a Windows Phone. Nezdržujme a pojďme...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/29/mva-zive-devops-an-it-pro-guide.aspx" class="internal-link view-post">
+                    <span></span>MVA živě: DevOps: An IT Pro Guide
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">21 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="4444f7fa-6ade-4020-8c46-15440f22446d" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            V posledn&iacute; době st&aacute;le častěji diskutovan&eacute; t&eacute;ma spolupr&aacute;ce v&yacute;voj&aacute;řů a IT profesion&aacute;lů v oblastech životn&iacute;ho cyklu aplikac&iacute; (nasazen&iacute;, monitoring, opravy chyb, diagnostika, release...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/28/souhrnna-aktualizace-pro-system-center-2012-sp1-a-r2-k-dispozici.aspx" class="internal-link view-post">
+                    <span></span>Souhrnn&#233; aktualizace pro System Center 2012 SP1 a R2 k dispozici
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">22 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="fb420d4d-f743-405d-b0e7-34828371d7fb" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            V&yacute;vojov&yacute; t&yacute;m prodiny System Center vydal v minul&yacute;ch dnech kumulativn&iacute; bal&iacute;čky aktualizac&iacute;, a to jak pro aktu&aacute;ln&iacute; generaci System Center 2012 R2, kde jde o Update Rollup 2, tak pro System Center...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/25/co-it-tyden-dal-znackujeme.aspx" class="internal-link view-post">
+                    <span></span>Co IT-t&#253;den dal: značkujeme
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">25 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="152366b1-85a0-461a-a251-9efcaedf89fd" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Kanty&gt; Poměrně často jezd&iacute;m s dětmi k m&yacute;m rodičům, kteř&iacute; bydl&iacute; na Vysočině. Holky si s babičkou a dědečkem v&yacute;borně rozum&iacute;, na Vysočinu jezd&iacute; r&aacute;dy a je&scaron;tě raději jsou, když je pouze odvezu...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/25/work-folders-pro-windows-7-jsou-tu.aspx" class="internal-link view-post">
+                    <span></span>Work Folders pro Windows 7 jsou tu!
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">25 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="52647d50-829e-4e8f-a2b1-84546d875b48" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/25/work-folders-pro-windows-7-jsou-tu.aspx#comments">
+                                                                    <span class="attribute-value reply-count">2</span>
+																			<span>Comments</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            S Work Folders neboli Pracovn&iacute;mi složkami jsme v&aacute;s seznamovali s př&iacute;chodem Windows Serveru 2012 R2 (konkr&eacute;tn&iacute; informace najdete ve star&scaron;&iacute;ch čl&aacute;nc&iacute;ch TechNet blogu zde , zde a zde ) a vždy...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/25/aplikacni-okenko-vyletar.aspx" class="internal-link view-post">
+                    <span></span>Aplikačn&#237; ok&#233;nko: V&#253;let&#225;ř
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">25 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="2400ca4a-c536-4cef-84b1-228aae8f617f" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Nev&iacute;te kam na v&yacute;let? Tato aplikace je V&aacute;&scaron; r&aacute;dce pro využit&iacute; voln&eacute;ho času. V jednotliv&yacute;ch kategori&iacute;ch naleznete aktu&aacute;ln&iacute; tipy na v&yacute;lety, akce pro děti, jarmarky, v&yacute;stavy...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/24/sp1-pro-sharepoint-2013-k-dispozici-podruhe.aspx" class="internal-link view-post">
+                    <span></span>SP1 pro SharePoint 2013 k dispozici (podruh&#233;)
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">26 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="e2765f30-22f1-469b-ba67-388cdee8841e" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Aktualizovan&aacute; verze Service Packu 1 pro SharePoint 2013 byla včera uvolněna ke stažen&iacute;. Prvn&iacute; verze Service Packu byla k dispozici již před nějak&yacute;m časem, bohužel obsahovala několik z&aacute;plat, kter&eacute; po instalaci...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/23/co-cekat-od-windows-server-2012-r2-update.aspx" class="internal-link view-post">
+                    <span></span>Co čekat od Windows Server 2012 R2 Update?
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">27 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="ea4ae299-648a-41b1-8b3b-9fc5cfb340b1" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                                <li class="attribute-item counts">
+                            <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/23/co-cekat-od-windows-server-2012-r2-update.aspx#comments">
+                                                                    <span class="attribute-value reply-count">1</span>
+																			<span>Comment</span>
+									                                                                                            </a>
+                        </li>
+                                    </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            D&iacute;ky ukončen&iacute; podpory Windows XP a uveden&iacute; Windows 8.1 Update zůstala trochu stranou medi&aacute;ln&iacute;ho z&aacute;jmu i ve stejnou dobu uveden&aacute; velk&aacute; aktualizace pro Windows Server 2012 R2. Pojďme se tedy pod&iacute;vat...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+            <li class="content-item">
+        <div class="abbreviated-post-header"></div>
+        <div class="abbreviated-post">
+
+            
+            <h4 class="post-name">
+                <a href="http://blogs.technet.com/b/technetczsk/archive/2014/04/22/windows-8-1-update-z-pohledu-it-profesionala.aspx" class="internal-link view-post">
+                    <span></span>Windows 8.1 Update z pohledu IT profesion&#225;la
+                </a>
+            </h4>
+            <div class="post-date">
+                <span class="label">Posted</span>
+                <span class="value">28 days ago</span>
+            </div>
+
+            <div class="post-author">
+                <span class="evolution2-post-author-by fiji-post-author-by">by</span>
+                                        <span class="avatar">
+                                                            <a href="/5980/ProfileUrlRedirect.ashx">
+                                    <img src="http://i1.social.microsoft.com/profile/u/avatar.jpg?displayname=blogczsk&amp;size=large" alt="blogCZSK}" style="border-width:0px;height:32px;width:32px;">
+                                </a>
+                                                    </span>
+                                <span class="user-name">
+                     							<span class="internal-link view-user-profile profile-usercard-hover" data-profile-userid='e0ab4139-e853-49ab-9495-38b9739f85bb'>
+								<a class="internal-link view-user-profile" href="http://social.technet.microsoft.com/profile/blogCZSK"><span></span>blogCZSK</a>
+							</span>
+                                     </span>
+            </div>
+
+            <div class="post-rating">
+                                					<span class="ui-rate small" data-contentid="bed763b8-6c85-4f74-b41d-579a8b33ecbb" data-contenttypeid="f7d226ab-d59f-475c-9d22-4a79e3f0ec07" data-readonly="true" data-initialvalue="0" data-initialcount="0" data-configuration="ReadOnly=true&amp;CssClass=small"></span>
+                            </div>
+
+                                                <div class="post-attributes">
+                <div class="attribute-list-header"></div>
+                <ul class="attribute-list">
+                                                        </ul>
+                <div class="attribute-list-footer"></div>
+            </div>
+
+                            
+                <div class="post-summary">
+                                            Na t&eacute;ma novinek ve Windows 8.1 Update z pohledu uživatele bylo v minul&yacute;ch t&yacute;dnech naps&aacute;no poměrně hodně čl&aacute;nků, a pokud v&aacute;s tato oblast zaj&iacute;m&aacute;, pod&iacute;vejte se např&iacute;klad na čl&aacute;nek...
+                                    </div>
+            
+        </div>
+        <div class="abbreviated-post-footer"></div>
+    </li>
+    
+	</ul>
+	<div class="content-list-footer standard"></div>
+	
+			<div class="pager ui-page" data-currentpage="0" data-pagesize="25" data-totalitems="2692" data-pagekey="pi93311" data-configuration=""><a href="/b/technetczsk/?pi93311=2" class="next" style="display:none"><span>&#62;</span></a></div>
+	</div>
+
+
+		</div>
+<div class="content-fragment-footer"></div>
+<div class="content-fragment-bottom fiji-content-fragment-bottom msdn-content-fragment-bottom msdntechnet"><div class="r1 fiji-r1 msdn-r1"></div><div class="r2 fiji-r2 msdn-r2"></div><div class="r3 fiji-r3 msdn-r3"></div><div class="r4 fiji-r4 msdn-r4"></div></div></div></div>
+</div>
+</div>
+</div>
+<div class="layout-footer"></div>
+</div></div>
+            
+			    <div class="footer-fragments-header"></div>
+<div class="footer-fragments minimal">    <div class="footer-fragment copyright-info"><ul class="footer-fragment-links"><li class="message copyright">© 2014 Microsoft Corporation.</li><li class="message termsOfService"><a href="http://technet.microsoft.com/en-US/cc300389.aspx">Terms of Use</a> </li><li class="message trademarks"><a href="http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx">Trademarks</a> </li><li class="message privacy"><a href="http://go.microsoft.com/fwlink/?LinkId=248681">Privacy &amp; Cookies</a> </li><li class="message version">7.1.507.6741</li></ul>   </div>   <div class="footer-fragment omniture-footer-fragment"><script src="http://i1.blogs.technet.com/rrcontent/48bcce997e6f5c6e238b82f7e182db0d-fc9aab31d4ee540ee5bd20388db5a627-RequestReducedScript.js" type="text/javascript" ></script><noscript><a href="http://www.omniture.com" title="Web Analytics"><img src="http://msstonojssocial.112.2O7.net/b/ss/msstonojssocial/1/H.20.2--NS/0" height="1" width="1" border="0"></a></noscript></div><script>var _daAnalytics = _daAnalytics || {}; _daAnalytics.init = function (d) {        _daAnalytics.Commands = _daAnalytics.Commands || [];        for (var a = function (a) { return function () { _daAnalytics.Commands.push([a].concat(Array.prototype.slice.call(arguments, 0))) } }, b = "siteId trackLinkClicks setUserId setProperty setView trackPage trackAction trackEvent trackView setAppId setAccountId setUserId".split(" "), c = 0; c < b.length; c++)            _daAnalytics[b[c]] = a(b[c]);        _daAnalytics.setAppId(d);        var a = document.createElement("script");        a.type = "text/javascript";        a.src = "//az416426.vo.msecnd.net/scripts/da.js";        a.async = !0;        var b = document.getElementsByTagName("script")[0];        b.parentNode.insertBefore(a, b); };_daAnalytics.init("cba10351-9818-4f0e-8a80-75fa43d96a51");_daAnalytics.trackPage();</script></div><div class="footer-fragments-footer"></div>
+            
+		
+<script type="text/javascript">
+// <![CDATA[
+ctl00_header_ctl00 = new ContentFragmentContainerCustomCallback('ctl00_header_ctl00',new Function('mode','parameters','callback','errorCallback','context','ctl00_header_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+// ]]>
+</script>	<script type="text/javascript" src="/cfs-filesystemfile.ashx/__key/defaultwidgets/7bb87a0cc5864a9392ae5b9e5f9747b7-dd895400883f4f43beca9fd9376a55b1/ui.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	jQuery.telligent.evolution.widgets.blogPostList.register({
+		wrapper: "#fragment-93311",
+		listUrl: "/utility/scripted-file.ashx?WeblogApp=technetczsk\u0026GroupKeys=\u0026_cf=callback-standard-list.vm\u0026_fid=93311\u0026_ct=page\u0026_cp=postlist\u0026_ctt=a3b17ab0af5f11dda3501fcf55d89593\u0026_ctc=4874\u0026_ctn=bcea08641f214e839c2b31db680d7bfe\u0026_cc=0\u0026AppType=Weblog",
+		detailUrl: "/utility/scripted-file.ashx?WeblogApp=technetczsk\u0026GroupKeys=\u0026_cf=callback-standard-detail.vm\u0026_fid=93311\u0026_ct=page\u0026_cp=postlist\u0026_ctt=a3b17ab0af5f11dda3501fcf55d89593\u0026_ctc=4874\u0026_ctn=bcea08641f214e839c2b31db680d7bfe\u0026_cc=0\u0026AppType=Weblog",
+		viewType: "standard"
+	});
+	//]]>
+	</script>
+<script type="text/javascript">
+// <![CDATA[
+ctl00_content_ctl00 = new ContentFragmentContainerCustomCallback('ctl00_content_ctl00',new Function('mode','parameters','callback','errorCallback','context','ctl00_content_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+ctl00_footer_ctl00 = new ContentFragmentContainerCustomCallback('ctl00_footer_ctl00',new Function('mode','parameters','callback','errorCallback','context','ctl00_footer_ctl00_ctl00._doCallback(mode+\':\'+parameters,callback,context,errorCallback);'));
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_header_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_header_ctl00_ctl00','ctl00$header$ctl00$ctl00','aspnetForm');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_content_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_content_ctl00_ctl00','ctl00$content$ctl00$ctl00','aspnetForm');
+// ]]>
+</script><script type="text/javascript">
+// <![CDATA[
+window.ctl00_footer_ctl00_ctl00 = new Telligent_CallbackManager('ctl00_footer_ctl00_ctl00','ctl00$footer$ctl00$ctl00','aspnetForm');
+// ]]>
+</script></form>
+	</body>
+</html>

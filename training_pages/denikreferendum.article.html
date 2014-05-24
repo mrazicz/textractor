@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="cs" />
+    <meta name="author" content="Sortof" />
+    <meta name="copyright" content="2009 Sortof - www.sortof.info" />
+    <meta name="description" content="Pražský magistrát ve spolupráci s občanskou iniciativou Pražské fórum spouští on-line portál Dotazy radním. Každý občan se tak může se svým problémem obrátit přímo na radní. Projekt on-line interpelací může zdarma využít každá radnice. " />
+    <meta name="keywords" content="Praha" />
+    <title>Veřejnost může pražské radní interpelovat on-line - Deník Referendum</title>
+	  
+    <script src="/javascripts/prototype.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/scriptaculous.js?1393236749" type="text/javascript"></script>
+<script src="/javascripts/lightbox.js?1393236749" type="text/javascript"></script>
+<script src="/javascripts/tinybox.js?1332754996" type="text/javascript"></script>
+    <script src="/javascripts/dragdrop.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/jquery-1.4.2.min.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/jquery.scrollTo-1.4.0-min.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/jquery.serialScroll-1.2.1-min.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/web/fontCharger.js?1332754996" type="text/javascript"></script>
+<script src="/javascripts/init.js?1393236749" type="text/javascript"></script>
+	<link href="/stylesheets/web/css/default.css?1393235427" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/lightbox.css?1393236749" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/tinybox.css?1332754996" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/fond_popup.css?1393236749" media="screen" rel="stylesheet" type="text/css" />
+	<!--[if IE]><link rel="stylesheet" type="text/css" href="/stylesheets/web/css/msie.css" media="screen" /><![endif]-->
+    <link rel="icon" href="favicon-dr.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="/images/web/favicon-dr.ico" type="image/x-icon" />
+	<script>
+		jQuery.noConflict();
+  </script>
+  
+  </head>
+	  	
+		<body>
+	
+    <!-- Accessibility items - do not remove !!! -->
+    <ul class="noscreen">
+      <li><a href="#content">Přeskočit na obsah</a></li>
+
+      <li><a href="#mainMenu">Přeskočit na menu</a></li>
+    </ul>
+
+    <hr class="hidden noprint" />
+
+    <div id="view">
+      <div class="topAdvert">
+        <div id='bmone2n-19881.1.1.1'>
+<noscript><div style='display:inline'><a href='http://go.cz.bbelements.com/please/redirect/19881/1/1/1/'><img src='http://go.cz.bbelements.com/please/showit/19881/1/1/1/?typkodu=img&keywords=' style='border-width:0' alt='' /></a></div></noscript>
+</div>
+
+      </div> <!-- /.topAdvert -->
+
+    
+      <div id="head">
+        <div id="main">
+          <h1 id="logo">
+          	  
+				<a href="/">Deník Referendum</a>  
+			  
+			
+				<a href="/rubrika/domov" style="color:black;">Domov</a>
+			
+		  </h1>
+        </div> <!-- /#main -->
+		<span id="flash_notice" style="color: green"></span>
+	   	<span id="flash_error" style="color: red"></span>
+        <form action="/hledani" id="search" method="post">
+			<fieldset>
+				<input class="button" id="text" name="text" type="text" />
+				<input class="submit" name="commit" type="submit" value="Hledej" />
+			</fieldset>
+		</form>
+		
+      <div id="mainMenu">
+        
+          <ul>
+          	
+              
+				      
+	            	<li><a href="/rubrika/domov" style="color:black;">Domov</a></li>
+				      
+			        
+              
+				      
+					      <li><a href="/rubrika/svet">Svět</a></li>
+				      
+			        
+              
+				      
+					      <li><a href="/rubrika/umeni">Umění</a></li>
+				      
+			        
+              
+				      
+					      <li><a href="/rubrika/nazory">Názory</a></li>
+				      
+			        
+              
+				      
+					      <li><a href="/rubrika/vikend">Víkend</a></li>
+				      
+			        
+              
+              
+				      
+					      <li><a href="/rubrika/vas-hlas">Váš Hlas</a></li>
+				      
+			        
+              
+				      
+					      <li><a href="/rubrika/forum">Fórum</a></li>
+				      
+			        
+          </ul>
+        
+      </div> <!-- /#mainMenu -->
+        
+        <div id="subMenu">
+          
+        
+        
+        
+                
+          <span>Témata:</span>
+			    <ul>
+          
+            
+              <li><a href="/tema/praha">Praha</a></li>
+            
+		  	  
+			      <li><a href="/temata">všechna témata</a></li>
+          </ul>
+        
+		  	  
+        </div> <!-- /#subMenu -->
+
+        
+        <div id="user">
+          <ul>
+            
+            	
+					<li class="displayOverlay">
+						<a href="">Přihlásit předplatitele</a>
+						<div class="overlay">
+			                <form action="/prihlaseni-uzivatele" class="formBox" method="post">
+			                  <fieldset>
+			                  	<span class="exits" style="float:right;cursor:pointer;" onclick="jQuery('.activeOverlay').remove();">X</span>
+			                    <h4 class="t">Přihlásit</h4>
+								
+			                    
+			                    <div class="clearfix">
+			                      <div class="lab">
+			                        <label for="">Login:</label>
+			                      </div> <!-- /.lab -->
+			                      
+			                      <div class="con">
+			                        <input type="text" name="post[login]" value="" class="button w100" />
+			                      </div> <!-- /.con -->
+			                    </div> <!-- /.clearfix -->
+			                    
+			                    <div class="clearfix">
+			                      <div class="lab">
+			                        <label for="">Heslo:</label>
+			                      </div> <!-- /.lab -->
+			                      
+			                      <div class="con">
+			                        <input type="password" name="post[password]" id="" value="" class="button w100" />
+			                      </div> <!-- /.con -->
+			                    </div> <!-- /.clearfix -->
+			                    
+			                    <input type="submit" value="Přihlásit" class="submit" />
+			                    
+			                    <ul class="offsetTop">
+			                      <li><a href="/registrace-uzivatele">Registrace</a></li>
+			                      <li><a href="/ztracene-heslo">Ztracené heslo</a></li>
+			                    </ul>
+			                  </fieldset>
+			                </form>
+	              		</div> <!-- /.overlay -->
+					</li>
+				
+            <li class="displayOverlay">
+            	<a href="">Odebírat zpravodaj</a>
+				<div class="overlay overlayLongLabel">
+					<span class="exits" style="float:right;cursor:pointer;" onclick="jQuery('.activeOverlay').remove();">X</span>
+				<form action="/auth/create_newsletter" class="formBox" method="post" onsubmit="new Ajax.Request('/auth/create_newsletter', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+                  <fieldset>
+                    <h4 class="t">Odebírat zpravodaj</h4>
+                    <div class="clearfix">
+                      <div class="lab">
+                        <label for="newsletter_email">Váš e-mail:</label>
+                      </div> <!-- /.lab -->
+                      
+                      <div class="con">
+                      	<input class="button w100" id="newsletter_email" name="newsletter[email]" size="30" type="text" />
+                      </div> <!-- /.con -->
+                    </div> <!-- /.clearfix -->
+					<input class="submit" name="commit" type="submit" value="Potvrdit" /> <a href="/zrusit_zpravodaj">Zrušit odebírání zpravodaje</a>
+                  </fieldset>
+				  <img align="absmiddle" alt="loading..." id="news_spinner" src="/images/web/spinner.gif?1393236749" style="display:none;border:none;" />
+                </form>
+              </div> <!-- /.overlay -->
+			</li>
+          </ul>
+        </div> <!-- /#user -->
+      </div> <!-- /#head -->
+
+
+	<hr class="hidden" />
+
+      <div id="content" class="cols cols2v1">
+        <div class="col1">
+        	<div class="box boxDetail">
+   <h2 class="head">Veřejnost může pražské radní interpelovat on-line</h2>
+   <p class="perex">Pražský magistrát ve spolupráci s občanskou iniciativou Pražské fórum spouští on-line portál Dotazy radním. Každý občan se tak může se svým problémem obrátit přímo na radní. Projekt on-line interpelací může zdarma využít každá radnice. </p>
+   <div class="cols detailImage line">
+     
+     <div class="col1 item itemSmallImage itemSmall noImg">
+       	
+
+	<div class="self">
+	 <h3 class="head alt">
+	 	
+			<a href="/autor/129-vratislav-dostal">(vd)</a>
+		
+	 </h3> 
+	 <p>
+	 	
+			
+		
+	 	20.05.2014 17:06
+	</p>
+	 
+	 <ul>
+	   <li><a href="/rubrika/domov">Domov</a></li>
+	   <li>Zpráva</li>
+	 </ul>
+	  
+	</div> <!-- /.self -->
+
+     </div> <!-- /.col1 -->
+
+     
+      <div class="col2 mainImage">
+      
+        <img alt="465623_mediafax_mikulas_krepelka" src="/assets/pictures/11647/hp_main/465623_Mediafax_MIKULAS_KREPELKA.jpg?1301586722" />
+        <p class="info">Od nynějška mohou komunikovat s občany on-line všechny městské části i radnice po celé České republice . Foto, mediafax Mikuláš Křepelka</p>
+      
+    </div> <!-- /.col2 -->
+   
+
+   </div> <!-- /.cols -->
+
+   <div class="cols detailContent">
+     <div class="col1">
+       <div class="box boxLine">
+		
+<ul>
+	
+		<li><a href="/clanek/tisk/18031-verejnost-muze-prazske-radni-interpelovat-on-line" target="_blank">Vytisknout článek</a></li>
+	
+	
+	<li class="displayOverlay">
+		<a href="">Poslat e-mailem</a>
+		<div class="overlay overlayEmail">
+			<span class="exits" style="float:right;cursor:pointer;" onclick="jQuery('.activeOverlay').remove();">X</span>
+           	<form action="/web/articles/send_by_email" class="formBox" method="post">
+		    <fieldset>
+		      <h4 class="t">Poslat e-mailem</h4>
+		      <div class="clearfix">
+		      	<label>Vaše jméno</label><input name="firstname" value="" class="button w100" type="text">
+		      	<label>Vaše příjmení</label><input name="lastname" value="" class="button w100" type="text">
+				<label>Email pro doručení</label><input name="email" value="" class="button w100" type="text">
+				<input id="id" name="id" type="hidden" value="18031" />
+		      </div> <!-- /.clearfix -->
+		      <input value="Odeslat" class="submit" type="submit">
+		    </fieldset>
+		  </form>
+         </div> <!-- /.overlay -->
+	</li>
+	
+	
+		
+		
+		
+	
+	<li class="displayOverlay">
+		<a href="" class="share">Sdílet</a>
+		<div class="overlay overlayEmail">
+			<span class="exits" style="float:right;cursor:pointer;" onclick="jQuery('.activeOverlay').remove();">X</span>
+ 			<h4 class="t">Sdílet</h4>
+			<ul>
+			  <li><a href="http://www.facebook.com/share.php?u=http://denikreferendum.cz/clanek/18031-verejnost-muze-prazske-radni-interpelovat-on-line&amp;title=Veřejnost může pražské radní interpelovat on-line" target="_blank">Facebook</a></li>
+			  <li><a href="http://cnntweet.appspot.com/articles/http://denikreferendum.cz/clanek/18031-verejnost-muze-prazske-radni-interpelovat-on-line/Veřejnost může pražské radní interpelovat on-line/tweet/" target="_blank">Twitter</a></li>
+			  <li><a href="http://digg.com/submit?phase=2&amp;url=http://denikreferendum.cz/clanek/18031-verejnost-muze-prazske-radni-interpelovat-on-line&amp;title=Veřejnost může pražské radní interpelovat on-line" target="_blank">Digg</a></li>
+			  <li><a href="http://del.icio.us/post?v=4&amp;partner=cnn&amp;noui&amp;jump=close&amp;url=http://denikreferendum.cz/clanek/18031-verejnost-muze-prazske-radni-interpelovat-on-line&amp;title=Veřejnost může pražské radní interpelovat on-line" target="_blank">Delicious</a></li>
+			  <li><a href="http://www.myspace.com/Modules/PostTo/Pages/?t=Veřejnost může pražské radní interpelovat on-line&amp;u=http://denikreferendum.cz/clanek/18031-verejnost-muze-prazske-radni-interpelovat-on-line" target="_blank">Myspace</a></li>
+			</ul>
+        </div> <!-- /.overlay -->
+	</li>
+	
+	
+	<li>Velikost textu <a href="#" id="fx-fontincr">+</a> <a href="#" id="fx-fontdecr">-</a></li>
+</ul>
+
+       </div> <!-- /.box -->
+
+		
+
+
+       <div class="box">
+		   
+
+       </div> <!-- /.box -->
+     </div> <!-- /.col1 -->
+
+     <div class="col2">
+       <div class="text">
+		<p>Jak dlouho bude například trvat dostavba tunelu Blanka? A kolik stál vlastně celkem projekt Opencard? Na tyto a další otázky je možné se ode dneška veřejně zeptat radních hlavního města, aniž by bylo nutné osobně přijít na zasedání zastupitelstva. Magistrát totiž ve spolupráci s občanskou iniciativou Pražské fórum spouští on-line portál Dotazy radním.<br><br>Na <a href="http://dotazy.praha.eu/">webu</a> tak mohou lidé od tohoto týdne položit dotaz každému z radních. Otázka i odpověď jsou na portálu přístupné čtyřiadvacet hodin denně moderní bezbariérovou cestou. Pro občany je to i zpráva o zájmu jednotlivých radních ke komunikaci s veřejností.<br><br>Aplikace byla vytvořena jako „opensource”, tedy volně dostupný legální software. Projekt tudíž může využít každá radnice.  „Spuštění on-line interpelací je v dokonalém souladu s naší dlouhodobou politikou otevřené radnice a transparentní správy Prahy. Věřím, že projekt svým dílem přispěje k procesu překlenování povážlivě se prohlubující propasti mezi občany hlavního města a jejich politickou reprezentací,“ uvedl primátor Prahy Tomáš Hudeček z TOP 09.<br><br>Předsedkyně Pražského fóra Tereza Kněžourková pak připomněla, že otevírání magistrátu občanům je základním cílem iniciativy. „Těší nás ochota Rady podpořit vznik této aplikace. Teď záleží na jednotlivých radních, aby Dotazy radním nebyly prázdnou schránkou, ale informačním portálem,“ uvedla.<br><br>Zdůraznila přitom, že aplikace je dostupná zdarma pro všechny zájemce. „Komunikovat s občany on-line tak mohou všechny městské části i radnice po celé České republice a nebude je to stát ani korunu,” dodala Kněžourková, předsedkyně iniciativy Pražské fórum<br><br>Projekt fakticky plynule navazuje na neformální tematické besedy s radními, které se z iniciativy občanského sdružení Pražské fórum konaly pravidelně od počátku letošního roku. Pražské fórum se projektem začlenilo do kampaně Ladíme Prahu, která se snaží o lepší komunikaci mezi veřejností, neziskovými organizacemi a samosprávou města. <br></p>
+       </div> <!-- /.text -->
+	   
+	   
+	   	
+       <div class="box boxComments noprint">
+		
+<h3 class="h line">Diskuse (0 příspěvků)</h3>
+<div class="in">
+	
+  
+  
+	
+	  <p>Pro vložení příspěvku musíte být zaregristrováni a přihlášeni.</p>
+	  <ul>
+	    <li><a href="/registrace-uzivatele">Registrovat</a></li>
+	    <li><a href="/prihlaseni-uzivatele">Přihlásit</a></li>
+	  </ul>
+	
+</div> <!-- /.in -->
+
+       </div> <!-- /.box -->
+       
+     </div> <!-- /.col2 -->
+
+   </div> <!-- /.cols -->
+ </div> <!-- /.box -->
+        
+
+        </div> <!-- /.col1 -->
+        
+        <div class="col2">
+        
+          <div class="box boxAdvert boxAdvert300">
+            <div class="in">
+              <div id='bmone2n-19881.1.1.4'>
+<noscript><div style='display:inline'><a href='http://go.cz.bbelements.com/please/redirect/19881/1/1/4/'><img src='http://go.cz.bbelements.com/please/showit/19881/1/1/4/?typkodu=img&keywords=' style='border-width:0' alt='' /></a></div></noscript>
+</div>
+
+            </div> <!-- /.in -->
+          </div> <!-- /.box -->
+          
+           <div class="box boxSettings">
+	<h2 class="h line">Nejdiskutovanější</h2>
+	<div class="in" id="in_discuss">
+	  <div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/17986-proc-ani-ja-nejsem-komunistou">Bohumil Sláma: Proč, ani já, nejsem komunistou</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18022-mame-moc-zmenit-tento-svet">Jaroslav Bican: Máme moc změnit tento svět</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18017-zatnout-ttipec">Tomáš Tožička: Zatnout TTIPec</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/17688-proc-nejen-politici-pomijeji-teorii-a-masaryka">Bohumil Sláma: Proč (nejen) politici pomíjejí teorii a Masaryka?</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/17809-balik-ideologie">Filip Šimeček: Balík ideologie</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18008-teze-o-radikalnim-umeni">Roman Kanda: Teze o radikálním umění</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/17909-o-dvou-novych-socialnich-svatych">Filip Outrata: O dvou nových sociálních svatých</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18001-plavkova-sezona">Zuzana Válková: Plavková sezóna</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18024-manifest-multikulturni-evropy">Daniel  Soukup: Manifest multikulturní Evropy</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+
+	</div> <!-- /.in -->
+	
+	<ul class="settings" id="discuss_settings">
+		  	<li>24 hodin</li>
+<li><a href="#" onclick="new Ajax.Request('/web/ajax/update_discuss?begin_date=Tue+May+13+19%3A35%3A18+%2B0200+2014&amp;dtype=2&amp;section_id=1', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('discuss_spinner');}, onLoading:function(request){Element.show('discuss_spinner');}}); return false;">týden</a></li>
+<li><a href="#" onclick="new Ajax.Request('/web/ajax/update_discuss?begin_date=Sun+Apr+20+19%3A35%3A18+%2B0200+2014&amp;dtype=3&amp;section_id=1', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('discuss_spinner');}, onLoading:function(request){Element.show('discuss_spinner');}}); return false;">měsíc</a></li>
+	</ul>
+	<img align="absmiddle" alt="loading..." id="discuss_spinner" src="/images/web/spinner.gif?1393236749" style="display:none;border:none;" />
+</div> <!-- /.box -->
+	        	<div class="box boxSettings">
+		<h2 class="h line">Nejčtenější</h2>
+		<div class="in" id="in_readest">    
+						<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18025-deti-rodi-porodnici-a-zachranari-a-ceskym-mediim-se-to-zda-normalni">Monika Horáková: Děti rodí porodníci a záchranáři a českým médiím se to zdá normální</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18024-manifest-multikulturni-evropy">Daniel  Soukup: Manifest multikulturní Evropy</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18021-o-polibcich-na-tetine-pohrbu-aneb-me-telo-patri-mne">Alena Scheinostová: O polibcích na tetině pohřbu aneb Mé tělo patří mně</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18017-zatnout-ttipec">Tomáš Tožička: Zatnout TTIPec</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18018-romove-evropskym-narodem">Saša  Uhlová: Romové evropským národem</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18022-mame-moc-zmenit-tento-svet">Jaroslav Bican: Máme moc změnit tento svět</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18023-odpoved-tri-odborovych-organizaci-ustr-zdenku-bartovi">Redakce DR: Odpověď tří odborových organizací ÚSTR Zdeňku Bártovi</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18010-farmacie-jakoby-na-zdravi-nezalezelo">Zuzana Vlasatá: Farmacie jakoby na zdraví nezáleželo</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/18014-babisizace-medii">Petr Gočev: Babišizace médií</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+<div class="item itemSmall noImg">
+  <div class="self">
+    <h3 class="head">
+    	<a href="/clanek/17989-lidove-noviny-poskozuji-jana-kellera-odkazem-na-smyslenou-analyzu">Lidové noviny poškozují Jana Kellera odkazem na smyšlenou analýzu</a>
+	</h3>
+  </div> <!-- /.self -->
+</div> <!-- /.item -->
+
+		</div> <!-- /.in -->
+		
+		<ul class="settings" id="readest_settings">
+		  	<li>24 hodin</li>
+<li><a href="#" onclick="new Ajax.Request('/web/ajax/update_readest?begin_date=Tue+May+13+19%3A35%3A18+%2B0200+2014&amp;section_id=1&amp;type=2', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('readest_spinner');}, onLoading:function(request){Element.show('readest_spinner');}}); return false;">týden</a></li>
+<li><a href="#" onclick="new Ajax.Request('/web/ajax/update_readest?begin_date=Sun+Apr+20+19%3A35%3A18+%2B0200+2014&amp;section_id=1&amp;type=3', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('readest_spinner');}, onLoading:function(request){Element.show('readest_spinner');}}); return false;">měsíc</a></li>
+
+		</ul>
+		<img align="absmiddle" alt="loading..." id="readest_spinner" src="/images/web/spinner.gif?1393236749" style="display:none;border:none;" />
+	</div> <!-- /.box -->
+
+          <div class="box">
+  <!-- <iframe src="http://www.facebook.com/plugins/recommendations.php?site=denikreferendum.cz&amp;width=290&amp;height=500&amp;header=true&amp;colorscheme=light&amp;font&amp;border_color" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:290px; height:500px;" allowTransparency="true"></iframe> -->
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=194337033922674";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="fb-recommendations" data-site="denikreferendum.cz" data-width="300" data-height="300" data-header="true"></div>
+</div> <!-- /.box -->
+
+
+        </div> <!-- /.col2 -->
+		<div class="rightAdvert">
+	          <div id='bmone2n-19881.1.1.2'>
+<noscript><div style='display:inline'><a href='http://go.cz.bbelements.com/please/redirect/19881/1/1/2/'><img src='http://go.cz.bbelements.com/please/showit/19881/1/1/2/?typkodu=img&keywords=' style='border-width:0' alt='' /></a></div></noscript>
+</div>
+
+	    </div> <!-- /.rightAdvert -->
+      </div> <!-- /#content -->
+
+      <hr class="hidden noprint" />
+
+      <div id="foot">
+        <p>
+	&copy; Vydavatelství Referendum s.r.o. 2014
+</p>
+<ul>
+  <li><a href="/">Dnes</a></li>
+  
+     
+	  <li>Domov</li>
+  
+     
+	  <li><a href="/rubrika/svet">Svět</a></li>
+  
+     
+	  <li><a href="/rubrika/umeni">Umění</a></li>
+  
+     
+	  <li><a href="/rubrika/nazory">Názory</a></li>
+  
+     
+	  <li><a href="/rubrika/vikend">Víkend</a></li>
+  
+    
+     
+	  <li><a href="/rubrika/vas-hlas">Váš Hlas</a></li>
+  
+     
+	  <li><a href="/rubrika/forum">Fórum</a></li>
+  
+</ul>
+
+      </div> <!-- /#foot -->
+    </div> <!-- /#view -->
+
+	<script type='text/javascript' charset='utf-8' src='http://go.cz.bbelements.com/bb/bb_one2n.js'></script>
+<script type='text/javascript'>/* <![CDATA[ */ 
+var bbkeywords=''; //fill in: 'key1;key2;..'
+bmone2n.addPosition('19881.1.1.1','');
+bmone2n.addPosition('19881.1.1.2','');
+bmone2n.addPosition('19881.1.1.4','');
+bmone2n.addPosition('19881.1.1.5','');
+bmone2n.getAd('go.cz.bbelements.com',bbkeywords,''+(typeof(bburlparam)=='string'?'&'+bburlparam:''),'utf-8');
+/* ]]> */</script>
+<div id='bmone2t-19881.1.1.1' style='display:none'><script type='text/javascript'>/* <![CDATA[ */ bmone2n.makeAd('19881.1.1.1'); /* ]]> */</script></div>
+<div id='bmone2t-19881.1.1.2' style='display:none'><script type='text/javascript'>/* <![CDATA[ */ bmone2n.makeAd('19881.1.1.2'); /* ]]> */</script></div>
+<div id='bmone2t-19881.1.1.4' style='display:none'><script type='text/javascript'>/* <![CDATA[ */ bmone2n.makeAd('19881.1.1.4'); /* ]]> */</script></div>
+<div id='bmone2t-19881.1.1.5' style='display:none'><script type='text/javascript'>/* <![CDATA[ */ bmone2n.makeAd('19881.1.1.5'); /* ]]> */</script></div>
+<script type='text/javascript'>/* <![CDATA[ */ bmone2n.moveAd(); /* ]]> */</script>
+
+	<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	try {
+	var pageTracker = _gat._getTracker("UA-10010976-5");
+	pageTracker._trackPageview();
+	} catch(err) {}</script>
+	
+	<!-- (C)2000-2010 Gemius SA - gemiusAudience / denikreferendum.cz / Ostatni -->
+			<script type="text/javascript">
+			<!--//--><![CDATA[//><!--
+			var pp_gemius_identifier = new String('zI470LhQuDhHwcjOaySHsvUJHZKpvftLCn.vEGJ43Nn.v7');
+			//--><!]]>
+			</script>
+			<script src="/javascripts/web/gT_MainScript_denikreferendum.js?1332754996" type="text/javascript"></script>
+  </body>
+</html>
