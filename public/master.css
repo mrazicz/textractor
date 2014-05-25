@@ -75,6 +75,11 @@ h1 {
   margin-bottom: 3px;
   font-size: 13px;
   padding: 10px;
+  position: relative;
+}
+
+.block .text {
+  margin-left: 120px;
 }
 
 .block.good {
@@ -83,6 +88,28 @@ h1 {
 
 .block.bad {
   background-color: #FFF5F5;
+}
+
+.block .score, .block .name {
+  width: 58px;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border-right: 2px solid white;
+}
+
+.block .name {
+  left: 60px;
+}
+
+.block.header {
+  background-color: #C4D8E2;
+  font-weight: 500;
 }
 
 .block .text.h1, .block .text.h2, .block .text.h3, .block .text.h4 {

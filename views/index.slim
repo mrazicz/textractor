@@ -10,10 +10,17 @@ form action='/' method='post'
 
 - if @blocks
   .result
+    .block class='header'
+      .score score
+      .name  el
+      .text  text
     - @blocks.each do |block|
       - el_class = block.good? ? 'good' : params[:hide_bad_blocks] ? 'bad hide' : 'bad'
       .block class=el_class
-        = block.path
+        .score
+          = block.score.round(2)
+        .name
+          = block.name
         .text class=block.name
           = block.text
 

@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'bundler'
+Bundler.require
+require_relative '../lib/textractor'
+
+class TextractorCLI < Thor
+  desc "server", "Run web interface"
+  option :p, default: 5678
+  def server
+    Thin::Runner.new(["start", "-p#{options[:p]}"]).run!
+  end
+
+  desc "go! URL_OR_FILE [-P bool]", "Extract main text from webpage"
+  option :"post-analyser", aliases: ['-P'], default: true, type: :boolean
+  option :output, aliases: ['-o'], default: nil
+  def go! url
+    opts = { post_analyse: options[:'post-analyser'] }
+    rslt = Textractor::App.new(url).perform(opts)
+    file = options[:output] ? File.open(options[:output], 'wb') : $stdout
+    rslt.each do |block|
+      file.puts "<#{block.name}> #{block.text}\n\n" if block.good?
+    end
+    file.close
+  end
+end
+
+TextractorCLI.start(ARGV)

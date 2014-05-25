@@ -3,13 +3,37 @@ module Textractor
     attr_reader :blocks
 
     def initialize block_collection
-      @blocks = block_collecion
+      @blocks = block_collection
     end
 
-    def perform
-      #cfg = Configuration.config
-      @blocks.map! do |block|
-        
+    def perform retrain=false
+      train_network(retrain) if retrain || !defined?(@@fann)
+      blocks.each {|b| b.nn_score = @@fann.run(b.data_for_neural)[0] }
+      blocks
+    end
+
+    private
+
+    def train_network retrain
+      if !retrain && File.exists?("#{ROOT}/../neurals/network.fann")
+        @@fann = RubyFann::Standard.new(
+          filename: "#{ROOT}/../neurals/network.fann")
+      else
+        @@fann = RubyFann::Standard.new(
+          :num_inputs=>78, :hidden_neurons=>[39, 14, 7], :num_outputs=>1)
+        @@fann.set_training_algorithm(:rprop)
+        @@fann.set_activation_function_layer(:gaussian_symmetric, 2)
+        @@fann.set_activation_function_layer(:gaussian_symmetric, 3)
+        @@fann.set_activation_function_output(:linear_piece_symmetric)
+        @@fann.set_activation_steepness_layer(0.65, 1) # for 1. hidden layer
+        @@fann.set_activation_steepness_layer(0.75, 2) # for 2. hidden layer
+        @@fann.set_activation_steepness_layer(0.75, 3) # for 3. hidden layer
+        @@fann.set_activation_steepness_output(0.8)
+        3.times {|i| puts @@fann.get_activation_steepness(i+1, 2) }
+        train = RubyFann::TrainData.new(
+                  filename: "#{ROOT}/../train_data/train.txt")
+        @@fann.train_on_data(train, 2000, 100, 0.003)
+        @@fann.save("#{ROOT}/../neurals/network.fann")
       end
     end
   end
@@ -23,7 +47,9 @@ module Textractor
     end
 
     def perform
-
+      main_text_start
+      common_path
+      block_neighbours
     end
 
     #private
@@ -107,7 +133,7 @@ module Textractor
       # from start to end
       @blocks.each {|block| block_neighbours_algorithm(block) }
       # from end to start
-      @blocks.reverse.each {|block| block_neighbours_algorithm(block) }
+      #@blocks.reverse.each {|block| block_neighbours_algorithm(block) }
     end
 
     private
@@ -124,8 +150,6 @@ module Textractor
         bb = blocks_before_while(block, 'li')
         ba = blocks_after_while(block, 'li')
         wrapped_by_good(block, bb, ba)
-        good_somewhere(block, ba[-2..-1])
-        good_somewhere(block, bb[0..1])
       end
     end
 
@@ -142,7 +166,11 @@ module Textractor
     def wrapped_by_good block, _bb, _ba, method_b=:good?, method_a=:good?
       bb = (_bb || []).map(&(method_b)).to_set
       ba = (_ba || []).map(&(method_a)).to_set
-      block.good! if bb.include?(true) && ba.include?(true)
+      if bb.include?(true) && ba.include?(true)
+        block.good!
+      else
+        block.bad!
+      end
     end
 
     def headline_neighbour block, bb, ba

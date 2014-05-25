@@ -16,7 +16,7 @@ module Textractor
       post '/' do
         url = params[:url]
         @blocks = Textractor::App.new(url).
-                                  dbg(false, true, params[:post_analyser])
+                                  perform(post_analyse: params[:post_analyser])
         slim :index
       end
     end

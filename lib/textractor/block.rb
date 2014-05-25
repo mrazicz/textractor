@@ -4,8 +4,8 @@ module Textractor
                 :relative_position, :class_chain, :path
     attr_accessor :nn_score, :score
 
-    GOOD_THRESHOLD      = 0.4   # threshold for good blocks
-    NEAR_GOOD_THRESHOLD = 0.15  # threshold for near good blocks
+    GOOD_THRESHOLD      = 0.5   # threshold for good blocks
+    NEAR_GOOD_THRESHOLD = 0.25  # threshold for near good blocks
 
     def initialize element, class_chain, blocks
       @element = element.dup

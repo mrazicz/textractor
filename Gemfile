@@ -8,6 +8,7 @@ gem 'sinatra', '~> 1.4.5'
 gem 'rake', '~> 10.3.2'
 gem 'slim', '~> 2.0.2'
 gem 'thin'
+gem 'thor', '~> 0.19.1'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
