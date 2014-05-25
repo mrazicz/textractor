@@ -11,6 +11,8 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
+Bundler::GemHelper.install_tasks
+
 task :console_pry do
   require 'pry'
   require 'pry/completion'
