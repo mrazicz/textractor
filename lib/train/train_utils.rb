@@ -18,7 +18,7 @@ module Train
         skip_flag = false
         skip_until = nil
         blocks.each do |block|
-          #puts(green_text("==  TEXT: #{block.text}"))
+          puts(green_text("==  TEXT: #{block.text}"))
           #puts(blue_text("==  PATH: #{block.path}"))
           if exists = read_digest(block)
             if     exists == "false" then bad_block(block, nil); next

@@ -29,10 +29,9 @@ module Textractor
         @@fann.set_activation_steepness_layer(0.75, 2) # for 2. hidden layer
         @@fann.set_activation_steepness_layer(0.75, 3) # for 3. hidden layer
         @@fann.set_activation_steepness_output(0.8)
-        3.times {|i| puts @@fann.get_activation_steepness(i+1, 2) }
         train = RubyFann::TrainData.new(
                   filename: "#{ROOT}/../train_data/train.txt")
-        @@fann.train_on_data(train, 2000, 100, 0.003)
+        @@fann.train_on_data(train, 5000, 100, 0.0011)
         @@fann.save("#{ROOT}/../neurals/network.fann")
       end
     end
@@ -139,13 +138,13 @@ module Textractor
     private
 
     def block_neighbours_algorithm block
-      bb, ba = blocks_before(block, 6), blocks_after(block, 6)
+      bb, ba = blocks_before(block, 3), blocks_after(block, 3)
       if block.nn_near_good? && !block.headline? && !block.list?
         wrapped_by_good(block, bb, ba)
         good_headline_somewhere(block, bb[-1..-1])
       elsif block.nn_near_good? && block.headline?
         wrapped_by_good(block, bb, ba, :nn_near_good?)
-        good_somewhere(block, ba[0..2], :nn_near_good?)
+        good_somewhere(block, ba[0..2], :good?)
       elsif !block.good? && block.list?
         bb = blocks_before_while(block, 'li')
         ba = blocks_after_while(block, 'li')

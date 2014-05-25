@@ -14,7 +14,7 @@ module Textractor
     end
 
     def analyse retrain=false
-      Analyser.new(blocks).perform
+      Analyser.new(blocks).perform(retrain)
     end
 
     def post_analyse
