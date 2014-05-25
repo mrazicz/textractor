@@ -20,7 +20,7 @@ module Textractor
           filename: "#{ROOT}/../neurals/network.fann")
       else
         @@fann = RubyFann::Standard.new(
-          :num_inputs=>78, :hidden_neurons=>[39, 14, 7], :num_outputs=>1)
+          :num_inputs=>78, :hidden_neurons=>[39, 19, 9], :num_outputs=>1)
         @@fann.set_training_algorithm(:rprop)
         @@fann.set_activation_function_layer(:gaussian_symmetric, 2)
         @@fann.set_activation_function_layer(:gaussian_symmetric, 3)
@@ -51,7 +51,7 @@ module Textractor
       block_neighbours
     end
 
-    #private
+    private
 
     # vetsinu techto pravidel pouzivame na bloky "na hranici dobreho skore"
     #
@@ -105,8 +105,7 @@ module Textractor
       end.map {|path, count| count > 2 ? path : nil }.compact.to_set
 
       @blocks.each do |b|
-        b.nn_score += 0.1 \
-          if b.nn_near_good? && paths.include?(File.dirname(b.path))
+        b.good! if paths.include?(File.dirname(b.path)) && !b.nn_good?
       end
     end
 
@@ -135,14 +134,14 @@ module Textractor
       #@blocks.reverse.each {|block| block_neighbours_algorithm(block) }
     end
 
-    private
 
     def block_neighbours_algorithm block
       bb, ba = blocks_before(block, 3), blocks_after(block, 3)
-      if block.nn_near_good? && !block.headline? && !block.list?
+      if block.nn_near_good? && !block.main_headline? && !block.list?
         wrapped_by_good(block, bb, ba)
         good_headline_somewhere(block, bb[-1..-1])
-      elsif block.headline?
+      elsif block.headline? && !block.good?
+        return if ba[0].headline?
         wrapped_by_good(block, bb, ba, :nn_near_good?)
         good_somewhere(block, ba[0..2], :good?)
       elsif !block.good? && block.list?

@@ -3,13 +3,16 @@
 
 require 'bundler'
 Bundler.require
+require 'thor'
+require 'thin'
 require_relative '../lib/textractor'
 
 class TextractorCLI < Thor
   desc "server", "Run web interface"
   option :p, default: 5678
   def server
-    Thin::Runner.new(["start", "-p#{options[:p]}"]).run!
+    config_opt = "-R#{File.dirname(__FILE__)}/../config.ru"
+    Thin::Runner.new(["start", "-p#{options[:p]}", config_opt]).run!
   end
 
   desc "go! URL_OR_FILE [-P bool]", "Extract main text from webpage"

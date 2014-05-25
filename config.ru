@@ -1,6 +1,6 @@
 require 'bundler'
-Bundler.require :default
+Bundler.setup :default
 require 'sinatra/base'
-require './lib/server'
+require File.dirname(__FILE__) + "/lib/server"
 
 run Textractor::Server::App.new

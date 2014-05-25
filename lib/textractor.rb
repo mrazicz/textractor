@@ -2,10 +2,11 @@ require 'bundler'
 require 'curb'
 require 'nokogiri'
 require 'yaml'
+require 'slim'
+require 'hashie'
+require 'ruby-fann'
 
 ENV['RACK_ENV'] ||= 'development'
-
-Bundler.require(:default, ENV['RACK_ENV'].to_sym)
 
 require_relative './utils'
 

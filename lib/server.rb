@@ -7,7 +7,16 @@ module Textractor
     class App < Sinatra::Base
       set :root, File.dirname(__FILE__)
       set :views, settings.root + '/../views'
-      set :public_folder, 'public'
+
+      get '/reset.css' do
+        content_type :css
+        File.read("#{settings.root}/../public/reset.css")
+      end
+
+      get '/master.css' do
+        content_type :css
+        File.read("#{settings.root}/../public/master.css")
+      end
 
       get '/' do
         slim :index

@@ -51,6 +51,10 @@ module Textractor
       @score = NEAR_GOOD_THRESHOLD - 0.01
     end
 
+    def nn_near_good!
+      @nn_score = GOOD_THRESHOLD - 0.1
+    end
+
     def features
       @features ||= BlockFeatures.new(self)
     end
