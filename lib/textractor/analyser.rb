@@ -142,7 +142,7 @@ module Textractor
       if block.nn_near_good? && !block.headline? && !block.list?
         wrapped_by_good(block, bb, ba)
         good_headline_somewhere(block, bb[-1..-1])
-      elsif block.nn_near_good? && block.headline?
+      elsif block.headline?
         wrapped_by_good(block, bb, ba, :nn_near_good?)
         good_somewhere(block, ba[0..2], :good?)
       elsif !block.good? && block.list?
