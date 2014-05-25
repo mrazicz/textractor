@@ -46,7 +46,7 @@ module Train
       # write proper header
       @train_file.close
       current_data = File.readlines(path)
-      current_data[0] = "#{(current_data.size - 1) / 2} 26 1\n"
+      current_data[0] = "#{(current_data.size - 1) / 2} 78 1\n"
       File.open(path, 'w') {|f| f.write current_data.join }
     end
 

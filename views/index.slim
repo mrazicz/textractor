@@ -1,0 +1,29 @@
+form action='/' method='post'
+  .controls
+    input.url type='url' name='url' placeholder='http://example.com' value=params[:url]
+    button Extract!
+  .controls.options
+    input.post-analyser type='checkbox' name='post_analyser' value='1' checked=!!params[:post_analyser]
+    label for='post-analyser' use post analyser
+    input.hide-bad-blocks type='checkbox' name='hide_bad_blocks' value='1' checked=!!params[:hide_bad_blocks]
+    label for='hide-bad-blocks' hide bad blocks
+
+- if @blocks
+  .result
+    - @blocks.each do |block|
+      - el_class = block.good? ? 'good' : params[:hide_bad_blocks] ? 'bad hide' : 'bad'
+      .block class=el_class
+        = block.path
+        .text class=block.name
+          = block.text
+
+
+javascript:
+  document.getElementsByClassName("hide-bad-blocks")[0].onchange = function() {
+    var display = this.checked ? 'none' : 'block';
+    var elements = document.getElementsByClassName('bad');
+    for(var i = 0; i < elements.length; i++) {
+      elements[i].style.display = display;
+    }
+  }
+

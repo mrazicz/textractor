@@ -1,0 +1,97 @@
+body {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-weight: 300;
+}
+
+#head {
+  height: 30px;
+  background: #333;
+  padding: 10px 50px;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  line-height: 30px;
+  font-size: 22px;
+  color: white;
+}
+
+#body {
+  padding: 20px 50px;
+}
+
+#body input.url {
+  width: 81%;
+  height: 25px;
+  padding: 10px 2%;
+  font-size: 16px;
+  line-height: 25px;
+  color: #666;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#body .controls.options input, #body .controls.options label {
+  margin-right: 10px;
+}
+
+#body .controls button {
+  width: 14%;
+  border-radius: 0;
+  box-shadow: 0;
+  border: 0px;
+  height: 49px;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 1px;
+  font-size: 16px;
+  font-family: 'Permanent Marker', cursive;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+#body .controls button:hover {
+  text-shadow: 0px 0px 16px rgba(255, 255, 255, 1);
+}
+
+
+#body .controls.options {
+  height: 25px;
+  line-height: 25px;
+}
+
+#body .result {
+  width: 100%;
+  margin: 15px 0;
+  border-top: 2px dashed #ccc;
+  padding: 15px 0;
+}
+
+.block {
+  margin-bottom: 3px;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.block.good {
+  background-color: #F0FFF0;
+}
+
+.block.bad {
+  background-color: #FFF5F5;
+}
+
+.block .text.h1, .block .text.h2, .block .text.h3, .block .text.h4 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.hide {
+  display: none;
+}
+
+

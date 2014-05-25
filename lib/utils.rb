@@ -29,3 +29,4 @@ end
 # include module to true and false classes
 class TrueClass; include BooleanToNum; end
 class FalseClass; include BooleanToNum; end
+

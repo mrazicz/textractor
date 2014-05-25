@@ -40,7 +40,7 @@ module Textractor
       doc.children.each do |el|
         parent_ci = classes_and_ids(el.parent)
         if _terminal_node?(el)
-          self << Block.new(el, class_chain + parent_ci)
+          self << Block.new(el, class_chain + parent_ci, self)
         else
           convert(el, class_chain + parent_ci)
         end

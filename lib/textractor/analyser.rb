@@ -85,20 +85,6 @@ module Textractor
       end
     end
 
-
-    #
-    # typ obalujici znacky -----------------------------------------------------
-    # 1. nadpisy, div, p, article a li, ktere maji skore mensi nez prah, obdrzi
-    #    skore blizici se prahu - toto je kvuli tomu, ze neuronova sit obcas neco
-    #    spatne vyhodnoti. Tato podminka se nebude vztahovat pro bloky majici
-    #    skore < 0
-    
-    def element_type
-      @block.each do |block|
-
-      end
-    end
-
     # sousedici bloky ----------------------------------------------------------
     # 1. bereme bloky od zacatku dokud nenarazime na predposledni puvodne 
     #    dobry blok
@@ -106,28 +92,95 @@ module Textractor
     #    a) jej oznacime za dobry pokud:
     #      i.   max. 4 bloky pred a max. 4 bloky za je dobry prvek
     #      ii.  je to nadpis a max. 3 bloky za nasleduje dobry prvek
-    #      iii. pokud obsahuje datum a za max. 2 bloky nasleduje nadpis
-    #      iv.  pokud obsahuje datum, pred max. 2 je nadpis a max. 2 bloky za je
-    #           dobry element
-    #      v.   pokud pred i za jsou elementy seznamu a alespon 50% bloku z 
-    #           celeho seznamu jsou dobre bloky 
+    #      iii. pokud pred i za (max 3 bloky od) jsou dobre elementy seznamu
     #           => takze ve vysledku cely seznam bude dobry
     #    b) oznacime je za spatny pokud:
     #      i.   pred ani za neni dobry element
-    #      ii.  pred neni dobry blok (max. 5 bl.) a nasleduje nadpis (max. 2 bl)
-    #           - toto je v konfliktu s tvrzenim a.iii - predchozi tvrzeni ma ale
-    #             prednost
-    #      iii. pred (max. 5 bloku) je dobry blok ale za uz ne a blok je u konce
-    #    c) pouze zvysime skore pokud:
-    #      i.   pred (kdekoliv) a za (kdekoliv) je dobry blok
-    #      ii.  pokud se jedna o nadpis a za (kdekoliv) existuje alespon jeden
-    #           dobry blok
     # 3. Jakmile se narazi na posledni puvodne dobry blok, algoritmus pokracuje
     #   znovu od jednicky, s tim ze postupuje od zadu, s tim, ze nyni muze 
     #   oznacit za spatny i block ktery byl puvodne dobry. Pokracuje se tak 
     #   dlouho, dokud se nenarazi na puvodne dobry blok, ktery i tento 
     #   algoritmus oznaci za dobry
     #
+    
+    def block_neighbours
+      # from start to end
+      @blocks.each {|block| block_neighbours_algorithm(block) }
+      # from end to start
+      @blocks.reverse.each {|block| block_neighbours_algorithm(block) }
+    end
+
+    private
+
+    def block_neighbours_algorithm block
+      bb, ba = blocks_before(block, 6), blocks_after(block, 6)
+      if block.nn_near_good? && !block.headline? && !block.list?
+        wrapped_by_good(block, bb, ba)
+        good_headline_somewhere(block, bb[-1..-1])
+      elsif block.nn_near_good? && block.headline?
+        wrapped_by_good(block, bb, ba, :nn_near_good?)
+        good_somewhere(block, ba[0..2], :nn_near_good?)
+      elsif !block.good? && block.list?
+        bb = blocks_before_while(block, 'li')
+        ba = blocks_after_while(block, 'li')
+        wrapped_by_good(block, bb, ba)
+        good_somewhere(block, ba[-2..-1])
+        good_somewhere(block, bb[0..1])
+      end
+    end
+
+    def good_somewhere block, _ba, good_method=:good?
+      ba = (_ba || []).map(&(good_method))[0..2].to_set
+      block.good! if ba.include?(true)
+    end
+
+    def good_headline_somewhere block, _ba, good_method=:good?
+      ba = (_ba || []).map {|b| b.send(good_method) && b.headline? }.to_set
+      block.good! if ba.include?(true)
+    end
+
+    def wrapped_by_good block, _bb, _ba, method_b=:good?, method_a=:good?
+      bb = (_bb || []).map(&(method_b)).to_set
+      ba = (_ba || []).map(&(method_a)).to_set
+      block.good! if bb.include?(true) && ba.include?(true)
+    end
+
+    def headline_neighbour block, bb, ba
+      if bb[-1] && bb[-1].main_headline? && bb[-1].nn_good?
+        block.good!
+      elsif bb[0] && ba[0].main_headline? && ba[0].nn_good?
+        block.good!
+      end
+    end
+
+    def blocks_before_while block, el
+      @blocks[0..block.position].reverse.inject([]) do |mem,b|
+        if b.name == el && File.dirname(b.path) == File.dirname(block.path)
+          (mem << b)
+        else
+          break mem
+        end
+      end
+    end
+
+    def blocks_after_while block, el
+      (@blocks[block.position+1..-1] || []).inject([]) do |mem,b|
+        if b.name == el && File.dirname(b.path) == File.dirname(block.path)
+          (mem << b)
+        else
+          break mem
+        end
+      end
+    end
+
+    def blocks_before block, limit=5
+      from, to = [block.position-limit, 0].max, [block.position-1, 0].max
+      from == to ? [] : @blocks[from..to]
+    end
+
+    def blocks_after block, limit=5
+      @blocks[(block.position+1)..(block.position+limit)] || []
+    end
   end
 end
 

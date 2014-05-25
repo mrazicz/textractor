@@ -11,33 +11,35 @@ module Textractor
       Preprocessor.new(html_page).perform
     end
 
-    def analyse blocks
-      train_network(false) unless defined?(@@fann)
+    def analyse blocks, retrain=false
+      train_network(retrain) if retrain || !defined?(@@fann)
       blocks.each {|b| b.nn_score = @@fann.run(b.data_for_neural)[0] }
       blocks
     end
 
-    def dbg
+    def dbg retrain, raw_output=false, post_analyser=true
       rslt = preprocess
-      rslt = analyse(rslt) 
-      pp = PostAnalyser.new(rslt)
-      pp.main_text_start
-      pp.common_path
-      rslt.map do |b|
-        [b.nn_score, "<#{b.name}>: #{b.text}", b.features.link_count]
+      rslt = analyse(rslt, retrain) 
+      if post_analyser
+        pp = PostAnalyser.new(rslt)
+        pp.main_text_start
+        pp.common_path
+        pp.block_neighbours
       end
 
+      if raw_output
+        rslt
+      else
+        rslt.map do |b|
+          [b.nn_score, "<#{b.name}>: #{b.text}", b.features.link_count]
+        end
+      end
     end
 
-    def run retrain=false, limit=-1.0
+    def run retrain=false
       rslt = preprocess
       train_network(retrain) if retrain || !defined?(@@fann)
-      rslt.keep_if do |b|
-        b.nn_score = @@fann.run(b.data_for_neural)[0]
-        b.nn_score > limit
-      end.map do |b|
-        [b.nn_score, "<#{b.name}>: #{b.text}", b.features.link_count]
-      end
+      rslt
     end
 
     private
@@ -48,7 +50,7 @@ module Textractor
           filename: "#{ROOT}/../neurals/network.fann")
       else
         @@fann = RubyFann::Standard.new(
-          :num_inputs=>26, :hidden_neurons=>[13, 7, 3], :num_outputs=>1)
+          :num_inputs=>78, :hidden_neurons=>[39, 14, 7], :num_outputs=>1)
         @@fann.set_training_algorithm(:rprop)
         @@fann.set_activation_function_layer(:gaussian_symmetric, 2)
         @@fann.set_activation_function_layer(:gaussian_symmetric, 3)
