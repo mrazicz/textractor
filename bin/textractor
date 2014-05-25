@@ -15,8 +15,10 @@ class TextractorCLI < Thor
   desc "go! URL_OR_FILE [-P bool]", "Extract main text from webpage"
   option :"post-analyser", aliases: ['-P'], default: true, type: :boolean
   option :output, aliases: ['-o'], default: nil
+  option :retrain, aliases: ['-R'], default: false, type: :boolean
   def go! url
-    opts = { post_analyse: options[:'post-analyser'] }
+    opts = { post_analyse: options[:'post-analyser'],
+             retrain: options[:retrain] }
     rslt = Textractor::App.new(url).perform(opts)
     file = options[:output] ? File.open(options[:output], 'wb') : $stdout
     rslt.each do |block|
