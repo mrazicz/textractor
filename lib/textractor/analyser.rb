@@ -48,6 +48,7 @@ module Textractor
     def perform
       main_text_start
       common_path
+      alone_elements
       block_neighbours
     end
 
@@ -106,6 +107,14 @@ module Textractor
 
       @blocks.each do |b|
         b.good! if paths.include?(File.dirname(b.path)) && !b.nn_good?
+      end
+    end
+
+    def alone_elements
+      @blocks.reverse_each do |block|
+        bb = blocks_before(block, 5)
+        break if block.good? && (good_before = good_somewhere(block, bb))
+        block.bad! unless good_before
       end
     end
 
